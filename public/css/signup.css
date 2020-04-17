@@ -1,0 +1,87 @@
+body {
+    background: url("../img/lsbg.jpg");
+    background-size: 100%;
+}
+
+
+#regform{
+    font-family: "Times New Roman", Times, serif;
+    width: 440px;
+    background: #24303c;
+    padding: 30px 40px;
+    color: white;
+    border-radius: 10px;
+}
+#regform h5{
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    display: block;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+.t{
+    outline: none;
+    box-sizing: border-box;
+    background: #24303c;
+    border: 1px solid #1f53c5;
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    width: 95%;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+}
+.t:hover{
+    border-color: orange;
+}
+.t:focus{
+    border-color: #2ecc71;
+}
+.shape1,
+.shape2 {
+    stroke-dasharray: 1120;
+    stroke-width: 5px;
+    fill: transparent;
+    stroke: #19f6e8;
+    border-bottom: 5px solid black ;
+    transition-timing-function: linear;
+    transition: stroke-dashoffset 2s, stroke-dasharray 4s ;
+    position: absolute;
+    z-index: 1;
+}
+.shape1 {
+    stroke-dashoffset: 1120;
+}
+.shape2 {
+    stroke-dashoffset: -1120;
+}
+.Head:hover .shape1,
+.Head:hover .shape2 {
+    stroke-dashoffset: 640;
+    stroke-dasharray: 500;
+}
+svg, rect{
+    margin: -10px -150px;
+    position: absolute;
+}
+#btn{
+    width: 100%;
+    margin: 10px 0;
+    background: #1f53c5;
+    border: 0;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+#btn:hover{
+    background: coral;
+}
+#btn:active{
+    background: #2ecc71;
+}
+.error{
+    color:tomato;
+    font-size: 14px;
+}

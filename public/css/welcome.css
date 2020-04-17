@@ -1,0 +1,11 @@
+body{
+    background: url("../img/bg2.jpg");
+    background-size: contain;
+}
+img{
+    transition: 0.3s;
+    width: 500px;
+}
+.m-4 img:hover{
+    transform: scale(1.05);
+}
