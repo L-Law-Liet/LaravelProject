@@ -81,7 +81,3 @@ svg, rect{
 #btn:active{
     background: #2ecc71;
 }
-.error{
-    color:tomato;
-    font-size: 14px;
-}

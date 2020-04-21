@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PagesController@welcome');
+Route::get('/home', 'PagesController@home');
 Route::get('/news', 'PagesController@news');
 Route::get('/category', 'PagesController@category');
 Route::get('/favourites', 'PagesController@favourites');
 Route::get('/basket', 'PagesController@basket');
-Route::get('/login', 'PagesController@login');
-Route::get('/signup', 'PagesController@signup');
+Route::get('/login', 'LoginController@index')->name('login');
+Route::post('/login', 'LoginController@checkLogin');
+Route::get('/signup', 'AuthController@getSignup')->name('signup');
+Route::post('/signup', 'AuthController@postSignup');
+Route::resource('/products', 'CategoriesController');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

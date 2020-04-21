@@ -2,29 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function welcome(){
-        return view('home.welcome');
+    public function home(){
+        $categories = Category::all();
+        return view('home.home')->with('categories', $categories);
     }
     public function news(){
-        return view('news');
+        $categories = Category::all();
+        return view('news')->with('categories', $categories);
     }
     public function basket(){
-        return view('basket');
-    }
-    public function category(){
-        return view('category');
+        $categories = Category::all();
+        return view('basket')->with('categories', $categories);
     }
     public function favourites(){
-        return view('favourites');
+        $categories = Category::all();
+        return view('favourites')->with('categories', $categories);
     }
     public function login(){
-        return view('login');
+        $categories = Category::all();
+        return view('auth.login')->with('categories', $categories);
     }
     public function signup(){
-        return view('signup');
+        $categories = Category::all();
+        return view('signup')->with('categories', $categories);
+    }
+    public function product(){
+        $categories = Category::all();
+        return view('signup')->with('categories', $categories);
     }
 }

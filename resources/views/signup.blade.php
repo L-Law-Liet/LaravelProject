@@ -1,4 +1,5 @@
 @section('head')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/signup.css')}}">
     @endsection
 @extends('layouts.main')
@@ -14,14 +15,36 @@
                         </svg>
                         <h5>Sign up now</h5>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{route('signup')}}" method="post" novalidate>
+                        @csrf
                         <div>
-                            <input class="t" type="text" placeholder="First Name" name="fn" autocomplete="on" value="" maxlength="20"> <p class="error"></p>
-                            <input class="t" type="text" placeholder="Last Name" name="ln" autocomplete="on" value="" maxlength="20"> <p class="error"></p>
-                            <input class="t" type="email" placeholder="E-mail" name="e" autocomplete="on" value="" maxlength="30"> <p class="error"></p>
-                            <input class="t" type="password" placeholder="Password" name="p" maxlength="20"> <p class="error"></p>
-                            <input class="t" type="password" placeholder="Confirm the password" name="p1" maxlength="20"> <p class="error"></p>
-                            <p class="log">I agree to <a class="log text-decoration-none text-warning" href="#"> terms and conditions</a></p>
+                            <input class="t {{$errors->has('name') ? 'border border-danger' : ''}}" type="text"
+                                   placeholder="First Name" name="name" autocomplete="on" value="{{Request::old('name')?:''}}" maxlength="20">
+                            @if($errors->has('name'))
+                                <span class="text-danger">
+                                    {{$errors->first('name')}}
+                                </span>
+                                @endif
+                             <input class="t mt-3 {{$errors->has('email') ? 'border border-danger' : ''}}" type="email"
+                                    placeholder="E-mail" name="email" autocomplete="on" value="{{Request::old('email')?:''}}" maxlength="30">
+                            @if($errors->has('email'))
+                                <span class="text-danger">
+                                    {{$errors->first('email')}}
+                                </span>
+                            @endif
+                            <input class="t mt-3 {{$errors->has('password') ? 'border border-danger' : ''}}" type="password" placeholder="Password" name="password" maxlength="20">
+                            @if($errors->has('password'))
+                                <span class="text-danger">
+                                    {{$errors->first('password')}}
+                                </span>
+                            @endif
+                            <input class="t mt-3 {{$errors->has('cpassword') ? 'border border-danger' : ''}}" type="password" placeholder="Confirm the password" name="cpassword" maxlength="20">
+                            @if($errors->has('cpassword'))
+                                <span class="text-danger">
+                                    {{$errors->first('cpassword')}}
+                                </span>
+                            @endif
+                            <p class="log mt-3">I agree to <a class="log text-decoration-none text-warning" href="#"> terms and conditions</a></p>
                         </div>
                         <div>
                             <input id="btn" type="submit" value="Register" name="r">
