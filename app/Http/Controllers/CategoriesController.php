@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
+use App\View\Components\products;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Helper\Table;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +21,6 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('layouts.navbar')->with('categories', $categories);
     }
 
     /**
@@ -42,12 +48,23 @@ class CategoriesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($id=null)
     {
-        $category = Category::all()->where('id', '=', '$id');
-        return view('category')->with('category', $category);
+
+        if (!empty($id)){
+            $category = Category::all()->where  ('id', '=', "$id")->first->toArray();
+            $name = $category['name'];
+            $products = Product::all()->where('category', '=', "$name");
+        }
+        else{
+            $products = Product::all();
+        }
+        $u = Auth::id();
+        $L = User::all()->where('id', '=', "$u")->first->toArray();
+        $N = $L['isAdmin'];
+        return view('category')->with('products', $products)->with('admin', $N);
     }
 
     /**

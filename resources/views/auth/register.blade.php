@@ -15,7 +15,7 @@
                         </svg>
                         <h5>Sign up now</h5>
                     </div>
-                    <form action="{{route('signup')}}" method="post" novalidate>
+                    <form action="{{route('register')}}" method="post" novalidate>
                         @csrf
                         <div>
                             <input class="t {{$errors->has('name') ? 'border border-danger' : ''}}" type="text"
@@ -38,10 +38,10 @@
                                     {{$errors->first('password')}}
                                 </span>
                             @endif
-                            <input class="t mt-3 {{$errors->has('cpassword') ? 'border border-danger' : ''}}" type="password" placeholder="Confirm the password" name="cpassword" maxlength="20">
-                            @if($errors->has('cpassword'))
+                            <input class="t mt-3 {{$errors->has('password_confirmation') ? 'border border-danger' : ''}}" type="password" placeholder="Confirm the password" name="password_confirmation" maxlength="20">
+                            @if($errors->has('password_confirmation'))
                                 <span class="text-danger">
-                                    {{$errors->first('cpassword')}}
+                                    {{$errors->first('password_confirmation')}}
                                 </span>
                             @endif
                             <p class="log mt-3">I agree to <a class="log text-decoration-none text-warning" href="#"> terms and conditions</a></p>

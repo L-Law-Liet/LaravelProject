@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <ul class="nav">
-            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('home')}}">Home</a></li>
+            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('/')}}">Home</a></li>
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('news')}}">News</a></li>
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('favourites')}}">Favourites</a></li>
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('basket')}}">Basket</a></li>
@@ -23,8 +23,8 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                    <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -38,12 +38,12 @@
             @endguest
             <div class="Drop nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-warning dropdown-toggle">Categories</div>
                 <div class="Drop-menu mt-2">
-{{--                    @if(count($categories)>0)--}}
-{{--                        @foreach($categories as $c)--}}
-{{--                            <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="category/{{$c->id}}">{{$c->name}}</a>--}}
-{{--                        @endforeach--}}
-{{--                    @endif--}}
-                    <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="#">All Categories</a>
+                    @if(count($categories)>0)
+                        @foreach($categories as $c)
+                            <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{url('category', $c->id)}}">{{$c->name}}</a>
+                        @endforeach
+                    @endif
+                    <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{url('category')}}">All Categories</a>
 
                 </div>
             </div>

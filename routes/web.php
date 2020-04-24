@@ -14,17 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'PagesController@home');
 Route::get('/home', 'PagesController@home');
 Route::get('/news', 'PagesController@news');
-Route::get('/category', 'PagesController@category');
 Route::get('/favourites', 'PagesController@favourites');
 Route::get('/basket', 'PagesController@basket');
-Route::get('/login', 'LoginController@index')->name('login');
-Route::post('/login', 'LoginController@checkLogin');
-Route::get('/signup', 'AuthController@getSignup')->name('signup');
-Route::post('/signup', 'AuthController@postSignup');
-Route::resource('/products', 'CategoriesController');
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@index');
+Route::get('/register', 'RegisterController@getSignup');
+Route::post('/register', 'RegisterController@postSignup');
+Route::get('category/{id?}', 'CategoriesController@show');
+Route::get('product/{id}', 'ProductsController@edit');
+Route::get('product/delete/{id}', 'ProductsController@destroy');
+Route::get('product/{product}', 'ProductsController@update');
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');

@@ -44,21 +44,23 @@ class ProductsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $product = Product::all()->where('id', '=', "$id")->first->get();
+
     }
      /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $product = Product::all()->where('id', '=', "$id")->first->get();
+        return view('products')->with('product', $product);
     }
 
     /**
@@ -66,21 +68,38 @@ class ProductsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $product = Product::all()->where('id', $id);
+        DB::table('products')->update(['name' => $request->name, 'price' => $request->input('price') ,
+                'description' => $request->input('description'),
+                'discount' => $request->discount]
+        );
+//        foreach ($product as $item) {
+//            $item->name = $request->input('name');
+//            $item->price = $request->get('price');
+//            $item->description = $request->get('description');
+//            $item->discount = $request->get('discount');
+//            $item->category = $request->get('category');
+//        }
+//
+//        $product->save();
+        return redirect()->route('products')->with('success', 'Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        //
+        DB::table('products')->delete();
+        $product = DB::table('products')->where('id', '=', $id)->delete();
+        return redirect('category');
     }
 }
