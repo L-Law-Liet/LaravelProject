@@ -6,8 +6,8 @@
         <ul class="nav">
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('/')}}">Home</a></li>
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('news')}}">News</a></li>
-            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('favourites')}}">Favourites</a></li>
-            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('basket')}}">Basket</a></li>
+{{--            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('favourites')}}">Favourites</a></li>--}}
+{{--            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning" href="{{url('basket')}}">Basket</a></li>--}}
             @guest
                 <li class="nav-item m-1 mr-3 ml-3">
                     <a class="nav-link text-warning" href="{{ url('login') }}">{{ __('Login') }}</a>
