@@ -25,12 +25,8 @@ class PagesController extends Controller
 
         return view('auth.login');
     }
-    public function signup(){
-
-        return view('auth.register');
-    }
-    public function product(){
-
-        return view('signup');
+    public function add()
+    {
+        return view('product-add');
     }
 }

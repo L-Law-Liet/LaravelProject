@@ -56,15 +56,16 @@ class CategoriesController extends Controller
         if (!empty($id)){
             $category = Category::all()->where  ('id', '=', "$id")->first->toArray();
             $name = $category['name'];
-            $products = Product::all()->where('category', '=', "$name");
+            $products = Product::where('category', '=', "$name")->paginate(6);
         }
         else{
-            $products = Product::all();
+            $category = '';
+            $products = Product::paginate(6);
         }
         $u = Auth::id();
         $L = User::all()->where('id', '=', "$u")->first->toArray();
         $N = $L['isAdmin'];
-        return view('category')->with('products', $products)->with('admin', $N);
+        return view('category')->with('products', $products)->with('admin', $N)->with('category', $category);
     }
 
     /**
