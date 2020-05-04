@@ -50,22 +50,60 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return Factory|\Illuminate\View\View
      */
-    public function show($id=null)
+    public function show($id=null, Request $request)
     {
-
         if (!empty($id)){
             $category = Category::all()->where  ('id', '=', "$id")->first->toArray();
             $name = $category['name'];
-            $products = Product::where('category', '=', "$name")->paginate(6);
+            switch ($request->input('sort')){
+                case 'pricea':
+                    $products = Product::orderBy('price')->where('category', '=', "$name")->paginate(6);
+                    break;
+                case 'priced':
+                    $products = Product::orderBy('price', 'desc')->where('category', '=', "$name")->paginate(6);
+                    break;
+                case 'az':
+                    $products = Product::orderBy('name')->where('category', '=', "$name")->paginate(6);
+                    break;
+                case 'za':
+                    $products = Product::orderBy('name', 'desc')->where('category', '=', "$name")->paginate(6);
+                    break;
+                case 'new':
+                    $products = Product::orderBy('created_at')->where('category', '=', "$name")->paginate(6);
+                    break;
+                default:
+                        $products = Product::where('category', '=', "$name")->paginate(6);
+            }
         }
         else{
             $category = '';
-            $products = Product::paginate(6);
+
+            switch ($request->input('sort')){
+                case 'pricea':
+                    $products = Product::orderBy('price')->paginate(6);
+                    break;
+                case 'priced':
+                    $products = Product::orderBy('price', 'desc')->paginate(6);
+                    break;
+                case 'az':
+                    $products = Product::orderBy('name')->paginate(6);
+                    break;
+                case 'za':
+                    $products = Product::orderBy('name', 'desc')->paginate(6);
+                    break;
+                case 'new':
+                    $products = Product::orderBy('created_at')->paginate(6);
+                    break;
+                default:
+                    $products = Product::paginate(6);
+            }
         }
         $u = Auth::id();
         $L = User::all()->where('id', '=', "$u")->first->toArray();
         $N = $L['isAdmin'];
-        return view('category')->with('products', $products)->with('admin', $N)->with('category', $category);
+        $m =array('', '');
+        return view('category')->with('products', $products)->with('admin', $N)->with('category', $category)->
+        with('m', $m)->with('SortType', $request->input('sort'));
     }
 
     /**

@@ -13,6 +13,26 @@
             @endif
         </h1>
     </div>
+    <div class="text-center">
+        <div class="container btn-outline-info w-50 rounded-lg p-4 mt-5">
+            <h3 class="">Sorting: </h3>
+            <form action="{{(!empty($category->id)) ? url('category', $category->id) : url('category')}}" method="get">
+                <div class="input-group">
+                    <select name="sort" class="custom-select">
+                        <option {{($SortType == 'default')? 'selected' : ''}} class="additional-option" value="default">Default</option>
+                        <option {{($SortType == 'pricea')? 'selected' : ''}} value="pricea">Price Ascending</option>
+                        <option {{($SortType == 'priced')? 'selected' : ''}} value="priced">Price Descending</option>
+                        <option {{($SortType == 'az')? 'selected' : ''}} value="az">A → Z</option>
+                        <option {{($SortType == 'za')? 'selected' : ''}} value="za">Z → A</option>
+                        <option {{($SortType == 'new')? 'selected' : ''}} value="new">New items</option>
+                    </select>
+                    <div class="input-group-append ml-1">
+                        <input type="submit" class="btn btn-outline-warning" value="Apply">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     @if($admin)
         <button onclick="window.location='{{url('product/add')}}'" class="position-fixed btn btn-success col-1 m-1">
             <img src="{{asset('img/plus-circle.svg')}}" alt="+"> Add a Product</button>
@@ -25,17 +45,21 @@
                     <div class="card bg-light card-body m-5">
                        <div class="row">
                            <div class="col-7 m-2">
-                               <div class="m-1"><h3>{{$p->name}}</h3></div>
+                               <div class="m-1">
+                                   <h3 class="btn-outline-primary btn w-100 border-right-0 border-left-0 rounded-0 btn-lg" onclick="window.location='{{url("product-details", $p->id)}}'">{{$p->name}}</h3>
+                               </div>
                                <div class="m-1"><h4>Category: {{$p->category}}</h4></div>
                                <div class="m-1"><h5>Price: ${{$p->price}}</h5></div>
                                <div class="card card-body bg-light m-1">
                                    <h6 class="text-center">Description</h6>
                                    <article>
                                        {{$p->description}}
-                                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam
-                                       asperiores at beatae consectetur cupiditate debitis delectus, dolorem enim, facilis
-                                       impedit incidunt ipsa iusto laboriosam, laudantium molestiae odio omnis optio pariatur
-                                       perspiciatis quasi quidem repudiandae sapiente ullam unde velit voluptatem?
+                                       @if(strlen($p->description)<50)
+                                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam
+                                           asperiores at beatae consectetur cupiditate debitis delectus, dolorem enim, facilis
+                                           impedit incidunt ipsa iusto laboriosam, laudantium molestiae odio omnis optio pariatur
+                                           perspiciatis quasi quidem repudiandae sapiente ullam unde velit voluptatem?
+                                           @endif
                                    </article>
                                </div>
 
@@ -51,7 +75,8 @@
                                @endif
                            </div>
                            <div class="align-middle col m-1">
-                               <div class="Image rounded-lg m-1" style="background: url('{{asset('img/'.$p->path.'.jpg')}}') no-repeat">
+                               <div class="Image rounded-lg m-1"  onclick="window.location='{{url("product-details", $p->id)}}'"
+                                    style="background: url('{{asset('img/'.$p->path.'.jpg')}}') no-repeat">
                                </div>
                                <p class="m-2 bg-info p-1 rounded-lg">Discount: {{$p->discount}}%</p>
                                @if($p->hasDiscount)

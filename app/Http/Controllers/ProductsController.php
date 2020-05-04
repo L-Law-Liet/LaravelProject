@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+    use App\Models\User;
     use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Validation\Validator;
+    use Symfony\Component\Console\Input\Input;
 
-class ProductsController extends Controller
+    class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,13 +41,27 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $v = $request->validate([
+            'name'  => 'required|max:50',
+            'price' => 'required|numeric',
+            'description'  => 'required',
+            'discount'  => 'required|numeric',
+            'category' => 'required|min:3'
+        ]);
+        if ($request->input('discount')>0){
+            $hasD = 1;
+        }
+        else{
+            $hasD = 0;
+        }
         DB::table('products')->insert([
             'name'=>$request->input('name'),
             'price'=>$request->input('price'),
             'description'=>$request->input('description'),
             'category'=>$request->input('category'),
             'discount'=>$request->input('discount'),
-            'hasDiscount'=>1
+            'hasDiscount'=>$hasD,
+            'path' => $request->input('path')
         ]);
 //        $p = new Product();
 //        $p->name = $request->input('name');
@@ -58,7 +76,7 @@ class ProductsController extends Controller
 //        }
 //        $p->category = $request->input('category');
 //        $p->save();
-        $m = 'Product Created Successfully';
+        $m = array('success', 'Product Created Successfully');
         return redirect('category')->with('m', $m);
     }
 
@@ -73,6 +91,15 @@ class ProductsController extends Controller
         $product = Product::all()->where('id', '=', "$id")->first->get();
 
     }
+        public function sale()
+        {
+            $products = Product::where('discount', '>', '0')->orderBy('discount', 'desc')->paginate(6);
+            $u = Auth::id();
+            $a = User::all()->where('id', '=', $u)->first->toArray();
+            $L = $a['isAdmin'];
+            return view('sales')->with('products', $products)->with('title', 'Sales Products $$')->with('admin', $L);
+        }
+
      /**
      * Show the form for editing the specified resource.
      *
@@ -106,6 +133,7 @@ class ProductsController extends Controller
         else{
             $product->hasDiscount = 0;
         }
+        $product->path = $request->input('path');
         $product->save();
         return view('products')->with('product', $product);
     }
@@ -119,6 +147,7 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         DB::table('products')->where('id', '=', $id)->delete();
-        return redirect('category');
+        $m = array('warning', 'Product Deleted Successfully');
+        return redirect('category')->with('m', $m);
     }
 }

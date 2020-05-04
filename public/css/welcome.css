@@ -5,6 +5,10 @@ body{
 img{
     transition: 0.3s;
     width: 500px;
+    cursor: pointer;
+}
+h3{
+    cursor: pointer;
 }
 .m-4 img:hover{
     transform: scale(1.05);

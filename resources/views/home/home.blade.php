@@ -8,15 +8,15 @@
        <div class="d-flex justify-content-center m-2 p-2">
            <div class="card bg-light">
                <div class="card-body rounded-lg">
-                   <div class="m-4">
-                       <img src="{{asset('img/s1.jpg')}}" alt="">
+                  @foreach($ps as $p)
+                   <div class="bg-info rounded-lg p-2 m-3">
+                       <div class="m-4">
+                           <h3 class="text-center btn-outline-warning mb-5 rounded-lg p-1" onclick="window.location='{{url("product-details", $p['id'])}}'">{{$p['name']}}</h3>
+                           <img onclick="window.location='{{url("product-details", $p['id'])}}'" class="rounded-lg" src="{{asset('img/'. $p['path'] .'.jpg')}}" alt="">
+                       </div>
                    </div>
-                   <div class="m-4">
-                       <img src="{{asset('img/s2.jpg')}}" alt="">
-                   </div>
-                   <div class="m-4">
-                       <img src="{{asset('img/s3.jpg')}}" alt="">
-                   </div>
+                   @endforeach
+
                </div>
            </div>
        </div>

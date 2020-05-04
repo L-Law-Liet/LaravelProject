@@ -24,11 +24,16 @@ Route::post('/login', 'LoginController@index');
 Route::get('/register', 'RegisterController@getSignup');
 Route::post('/register', 'RegisterController@postSignup');
 Route::get('category/{id?}', 'CategoriesController@show');
+Route::get('sale', 'ProductsController@sale');
 Route::get('product/edit/{id}', 'ProductsController@edit');
 Route::get('product/add', 'ProductsController@create');
 Route::post('category', 'ProductsController@store');
 Route::get('product/update/{id}', 'ProductsController@update');
 Route::get('product/delete/{id}', 'ProductsController@destroy');
+Route::get('product-details/{id}', 'PagesController@product');
+Route::get( 'fav/{id}','UserController@favourites');
+Route::get( 'basket/{id}','UserController@basket');
+Route::get('basket/delete/{id}', 'UserController@destroy');
 
 Auth::routes();
 

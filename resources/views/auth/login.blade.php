@@ -45,7 +45,7 @@
                     @endif
                 </div>
                 <div class="mt-2">
-                    <a class="text-decoration-none text-warning" href="{{url('signup')}}">Don't have an account?</a>
+                    <a class="text-decoration-none text-warning" href="{{url('register')}}">Don't have an account?</a>
                 </div>
             </form>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.home');
+        $p = Product::all()->toArray();
+        $RandKeys = array_rand($p, 5);
+        $arr = array();
+        for ($i=0; $i<5; $i++){
+            $arr[$i] = $p[$RandKeys[$i]];
+        }
+        return view('home.home')->with('ps', $arr);
     }
 }

@@ -8,11 +8,11 @@
                     <img class="ml-1 mb-1" src="{{asset(url('img/home.svg'))}}" alt=""></a></li>
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('news')}}">News
                     <img class="ml-1 mb-1" src="{{asset(url('img/news.svg'))}}" alt=""></a></li>
-{{--            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('sale')}}">Sale--}}
-{{--                    <img class="ml-1 mb-1" src="{{asset(url('img/sale.svg'))}}" alt=""></a></li>--}}
+            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('sale')}}">Sale
+            <img class="ml-1 mb-1" src="{{asset(url('img/sale.svg'))}}" alt=""></a></li>
         @if(Auth::check() && !Auth::user()->isAdmin)
-{{--                <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('favourites')}}">Favourites--}}
-{{--                        <img class="ml-1 mb-1" src="{{asset(url('img/star.svg'))}}" alt=""></a></li>--}}
+                <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('favourites')}}">Favourites
+                        <img class="ml-1 mb-1" src="{{asset(url('img/star.svg'))}}" alt=""></a></li>
                 <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('basket')}}">
                         Basket <img class="ml-1 mb-1" src="{{asset(url('img/cart.svg'))}}" alt="">
                     </a></li>
