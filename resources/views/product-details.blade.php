@@ -6,8 +6,8 @@
     <div class="min-vh-100">
         <div>
             <div class="justify-content-center d-flex">
-                <div style="min-height: 100px; display: {{($b ?? '')? 'block;' : 'none;'}}"
-                     class="bg-success text-center text-white w-50 rounded-lg opacity-30 position-absolute">
+                <div id="M" style="min-height: 50px; opacity: 80%; z-index: 10; display: {{($b ?? '')? 'block;' : 'none;'}}"
+                     class="bg-success text-center text-white m-4 w-50 rounded-lg position-absolute">
                     <h4>Added To a Basket!</h4>
                 </div>
                 <div class="w-100 m-5 card bg-light">
@@ -40,14 +40,17 @@
 
 
                                    <div class="">
-                                       <button onclick="decrement()" class="btn-outline-info btn" type="button" name="pbutton">
-                                           -
-                                       </button>
-                                           <input class="rounded-lg border-info col-2" type="text" id="C" readonly name="count" value="1">
+                                       <form id="form" action="{{action('UserController@basket', $p->id)}}">
+                                           <button onclick="decrement()" class="btn-outline-info btn" type="button" name="pbutton">
+                                               -
+                                           </button>
+                                               <input class="rounded-lg col-2 text-center m-2 border-0 bg-light"
+                                                      type="text" id="C"  readonly name="count" value="1">
 
-                                       <button onclick="increment()" class="btn-outline-info btn" type="button" name="pbutton">
-                                           +
-                                       </button>
+                                           <button onclick="increment()" class="btn-outline-info btn" type="button" name="pbutton">
+                                               +
+                                           </button>
+                                       </form>
                                    </div>
 
                                </div>
@@ -57,7 +60,8 @@
                             <div class="row w-100 m-3">
                                 <div class="text-center col-6 bg-primary m-2 p-4 rounded-lg">
                                     <h5 class="font-weight-light text-light mb-3">Add to Cart</h5>
-                                    <a onclick="window.location='{{url('basket', $p->id)}}'"><img class="order" src="{{asset('img/commerce.svg')}}" alt=""></a>
+                                    <a onclick="f()">
+                                        <img class="order" src="{{asset('img/commerce.svg')}}" alt=""></a>
                                 </div>
                                 <div class="text-center col bg-success m-2 p-4 rounded-lg">
                                     <h5 class="font-weight-light text-light mb-3">Add to Favourites</h5>
@@ -73,12 +77,14 @@
         </div>
     </div>
     <script>
+        setTimeout(fade_out, 3000);
 
-        {{--function f() {--}}
-        {{--    $('#C').val( function(i, oldval) {--}}
-
-        {{--        //return  window.location='{{url('basket', [$p->id, $oldval])}}';--}}
-        {{--    });--}}
+        function fade_out() {
+            $("#M").fadeOut().empty();
+        }
+function f() {
+    document.getElementById('form').submit();
+}
         function increment() {
             $('#C').val( function(i, oldval) {
                 return ++oldval;

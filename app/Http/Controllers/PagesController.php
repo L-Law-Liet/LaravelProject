@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Favourites;
 use App\Models\Product;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,12 +14,13 @@ class PagesController extends Controller
 {
     public function home(){
         $p = Product::all()->toArray();
-        $RandKeys = array_rand($p, 5);
+        $RandKeys = array_rand($p, 4);
         $arr = array();
-        for ($i=0; $i<5; $i++){
+        for ($i=0; $i<4; $i++){
             $arr[$i] = $p[$RandKeys[$i]];
         }
-        return view('home.home')->with('ps', $arr);
+        $i = random_int(0, 5);
+        return view('home.home')->with('ps', $arr)->with('i', $i);
     }
     public function news(){
         return view('news');
@@ -30,8 +32,14 @@ class PagesController extends Controller
         join('orders', 'products.id', '=', 'orders.pid')->
         join('users', 'orders.uid', '=', 'users.id')->
         where('orders.uid',  $u)->get();
+        $pr = array();
+        for ($i=0; $i<count($p); $i++){
+            $pr[$i] = $p[$i]->id;
+        }
+        $b = DB::table('orders')->select('orders.*')->where('uId', $u)->
+        whereIn('pId', $pr)->get();
 //        $pr = Product::all()->whereIn('id', $p);
-        return view('basket')->with('products', $p);
+        return view('basket')->with('products', $p)->with('b', $b);
     }
     public function favourites(){
         $u = Auth::id();

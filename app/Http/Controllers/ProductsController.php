@@ -76,8 +76,7 @@ use App\Models\Product;
 //        }
 //        $p->category = $request->input('category');
 //        $p->save();
-        $m = array('success', 'Product Created Successfully');
-        return redirect('category')->with('m', $m);
+        return redirect('category')->with('ms', 'Product Created Successfully!');
     }
 
     /**
@@ -135,7 +134,7 @@ use App\Models\Product;
         }
         $product->path = $request->input('path');
         $product->save();
-        return view('products')->with('product', $product);
+        return view('products')->with('product', $product)->with('m', 'Updated');
     }
 
     /**
@@ -147,7 +146,7 @@ use App\Models\Product;
     public function destroy($id)
     {
         DB::table('products')->where('id', '=', $id)->delete();
-        $m = array('warning', 'Product Deleted Successfully');
-        return redirect('category')->with('m', $m);
+
+        return redirect()->back()->with('m', 'Product Deleted');
     }
 }

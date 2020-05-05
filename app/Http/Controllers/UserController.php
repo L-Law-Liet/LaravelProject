@@ -35,7 +35,7 @@ class UserController extends Controller
 //        $L = Favourites::all()->where('uid', '=', '$uid')->get();
         return view('product-details')->with('p', $p)->with('f', $L);
     }
-    function basket($id){
+    function basket($id, Request $request){
         $uid = Auth::id();
         $p = Product::find($id);
         $L = DB::table('orders')->select('orders.*')->
@@ -45,7 +45,8 @@ class UserController extends Controller
         if (!$L) {
             DB::table('orders')->insert([
                 'uid' => $uid,
-                'pid' => $id
+                'pid' => $id,
+                'count'=>$request->input('count')
             ]);
         }
         else{

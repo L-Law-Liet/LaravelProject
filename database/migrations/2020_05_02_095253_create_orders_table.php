@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('uId')->references('id')->on('users');
             $table->bigInteger('pId')->unsigned();
             $table->foreign('pId')->references('id')->on('products');
+            $table->integer('count');
         });
     }
 

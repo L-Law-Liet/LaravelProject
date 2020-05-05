@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use App\View\Components\products;
+use http\Env\Response;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -101,9 +102,72 @@ class CategoriesController extends Controller
         $u = Auth::id();
         $L = User::all()->where('id', '=', "$u")->first->toArray();
         $N = $L['isAdmin'];
-        $m =array('', '');
-        return view('category')->with('products', $products)->with('admin', $N)->with('category', $category)->
-        with('m', $m)->with('SortType', $request->input('sort'));
+        return view('category')->with('products', $products)->with('admin', $N)->with('category', $category)
+       ->with('SortType', $request->input('sort'));
+    }
+    public function search(Request $request){
+        if ($request->ajax()){
+            $out = '';
+            $ps = DB::table('products')->where('name', 'like', '%'.$request->search.'%')->
+            orWhere('category', 'like', '%'.$request->search.'%')->get();
+        if ($ps){
+            $u = User::find(Auth::id());
+           foreach ($ps as $p){
+               $out .= "   <div class=\"card bg-light card-body m-5\">
+                       <div class=\"row\">
+                           <div class=\"col-7 m-2\">
+                               <div class=\"m-1\">
+                                   <h3 class=\"btn-outline-primary btn w-100 border-right-0 border-left-0 rounded-0 btn-lg\"
+                                       onclick=\"window.location='".url("product-details",$p->id) ."'\">$p->name</h3>
+                               </div>
+                               <div class=\"m-1\"><h4>Category: $p->category</h4></div>
+                               <div class=\"m-1\"><h5>Price: $$p->price</h5></div>
+                               <div class=\"card card-body bg-light m-1\">
+                                   <h6 class=\"text-center\">Description</h6>
+                                   <article>".
+                   $p->description;
+                                       if(strlen($p->description)<50) {
+                                           $out .= "Lorem ipsum dolor sit amet, consectetur adipisicing elit . Accusantium aperiam
+                                           asperiores at beatae consectetur cupiditate debitis delectus, dolorem enim, facilis
+                                           impedit incidunt ipsa iusto laboriosam, laudantium molestiae odio omnis optio pariatur
+                                           perspiciatis quasi quidem repudiandae sapiente ullam unde velit voluptatem ?";
+                                           }
+                                 $out .= " </article>
+                               </div>";
+                   if ($u->isAdmin) {
+                       $out .= "                                 <div class=\"text-center mt-3 m-2\">
+                                       <button onclick=\"window.location='".action('ProductsController@destroy', $p->id)."'\" class=\"btn btn-danger col-2\">
+                                           <img src=\"{{asset('img/trash.svg')}}\" alt=\"\"></button>
+
+                                       <button class=\"btn btn-info col-2\" onclick=\"window.location='".url('product/edit', $p->id)."'\">
+                                           <img src=\"{{asset('img/edit.svg')}}\" alt=\"\">
+                                       </button>
+                                   </div>";
+                               }
+                           $out .= "</div>
+                           <div class=\"align-middle col m-1\">
+                               <div class=\"Image rounded-lg m-1\"  onclick=\"window.location='".url("product-details", $p->id)."'\"
+                                    style=\"background:  url('". url("img/$p->path.jpg") ."') no-repeat\">
+                               </div>
+                               <p class=\"m-2 bg-info p-1 rounded-lg\">Discount:
+                   $p->discount%</p>";
+
+                               if($p->hasDiscount) {
+                                   $out .= "<p class=\"m-2 bg-warning p-1 rounded-lg border border-danger text-white\">
+                                       <s>Price:
+                   $p->price</s> <b class=\"text-danger\">Discount price: $<u>".($p->price - ($p->discount * $p->price / 100))."</u></b></p>";
+                               }
+                               else{
+                                   $out .= "<p class=\"m-2 bg-light p-1 rounded-lg border border-primary\">Price:
+                   $$p->price</p>";
+                               }
+                               $out .= "</div>
+                       </div>
+                    </div>";
+            }
+            return Response($out);
+        }
+        }
     }
 
     /**

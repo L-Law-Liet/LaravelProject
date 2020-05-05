@@ -39,22 +39,13 @@ $categories = Category::all();
         ::-webkit-scrollbar-thumb {
             background: #FF0000;
         }
-        .Drop-menu{
-            position: absolute;
-            display: none;
-            z-index: 1;
-            width: 150px;
-        }
-        .Drop:hover .Drop-menu {
-            display: block;
-        }
         footer {
             flex: 0 0 auto;
         }
     </style>
     @yield('head')
 </head>
-<body>
+<body style="background-color: lightblue; background-image: linear-gradient(to bottom right, lightblue, lightgreen);">
 @include('layouts.navbar')
 <!-- Start your project here-->
 @yield('content')

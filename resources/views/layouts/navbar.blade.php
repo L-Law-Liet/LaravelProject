@@ -47,12 +47,13 @@
                     </div>
                 </li>
             @endguest
-            <div class="Drop nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-light dropdown-toggle">Categories
+            <li><div class="nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-light dropdown-toggle"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
                     <img class="ml-1 mb-1" src="{{asset(url('img/grid.svg'))}}" alt=""></div>
-                <div class="Drop-menu mt-2">
+                <div class="mt-2 dropdown-menu bg-dark">
                     @if(count($categories)>0)
                         @foreach($categories as $c)
-                            <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{url('category', $c->id)}}">
+                            <a class="d-block p-1 bg-dark text-decoration-none dropdown-item text-light" href="{{url('category', $c->id)}}">
                                 <img class="mr-1 mb-1" src="{{asset('img/'.strtolower($c->name).'.svg')}}" alt="">{{$c->name}}
                                 </a>
                         @endforeach
@@ -61,7 +62,7 @@
                         <img class="mr-1 mb-1" src="{{asset('img/viral.svg')}}" alt="">All Categories</a>
 
                 </div>
-            </div>
+            </div></li>
         </ul>
     </div>
 </nav>

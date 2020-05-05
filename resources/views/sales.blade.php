@@ -5,7 +5,7 @@
 @section('content')
     <div class="min-vh-100">
         <div class="m-4">
-            <h1 class="btn-danger text-center text-warning  rounded-lg text-center w-100 p-1">
+            <h1 class="btn-danger text-center text-warning rounded-lg text-center w-100 p-2">
                     {{$title}}
 
             </h1>
@@ -22,7 +22,8 @@
                         <div class="card bg-light card-body m-5">
                             <div class="row">
                                 <div class="col-7 m-2">
-                                    <div class="m-1"><h3>{{$p->name}}</h3></div>
+                                    <div class="m-1 btn-outline-primary btn w-100" onclick="window.location='{{url("product-details", $p->id)}}'">
+                                        <h3>{{$p->name}}</h3></div>
                                     <div class="m-1"><h4>Category: {{$p->category}}</h4></div>
                                     <div class="m-1 btn-warning p-1 rounded-lg"><h5 class="text-danger"><s class="text-white">Price: {{$p->price}}</s>
                                             <b class="text-danger">Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></b></h5></div>
@@ -51,7 +52,8 @@
                                     @endif
                                 </div>
                                 <div class="align-middle col m-1">
-                                    <div class="Image rounded-lg m-1" style="background: url('{{asset('img/'.$p->path.'.jpg')}}') no-repeat">
+                                    <div class="Image rounded-lg m-1" onclick="window.location='{{url("product-details", $p->id)}}'"
+                                         style="background: url('{{asset('img/'.$p->path.'.jpg')}}') no-repeat">
                                     </div>
                                     <h3 class="m-4 bg-warning text-danger text-center p-1 rounded-lg ">Discount: {{$p->discount}}%</h3>
 

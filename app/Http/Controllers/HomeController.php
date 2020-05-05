@@ -25,11 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         $p = Product::all()->toArray();
-        $RandKeys = array_rand($p, 5);
+        $RandKeys = array_rand($p, 4);
         $arr = array();
-        for ($i=0; $i<5; $i++){
+        for ($i=0; $i<4; $i++){
             $arr[$i] = $p[$RandKeys[$i]];
         }
-        return view('home.home')->with('ps', $arr);
+        $i = random_int(0, 5);
+        return view('home.home')->with('ps', $arr)->with('i', $i);
     }
 }

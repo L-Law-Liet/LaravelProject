@@ -4,8 +4,12 @@
 @extends('layouts.main')
 @section('content')
 <div class="min-vh-100">
-{{--    <a class="btn btn-info m-1 mt-5 position-fixed" href="{{url()->previous()}}"><img src="{{asset('img/undo.svg')}}" alt=""></a>--}}
+    <a class="btn btn-info m-1 mt-5 position-fixed" href="{{url()->previous()}}"><img src="{{asset('img/undo.svg')}}" alt=""></a>
     <div class="d-flex justify-content-center">
+        <div id="M" style="min-height: 18px; opacity: 80%; z-index: 10; display: {{($m ?? '')? 'block;' : 'none;'}}"
+             class="bg-primary text-center text-white m-4 w-50 rounded-lg position-absolute">
+            <h4>Product Updated Successfully!</h4>
+        </div>
         <div class="col-8 m-5 border border-info rounded-lg bg-light ">
             <div class="m-3">
                 <h1 class="btn-outline-info w-100 rounded-lg text-center">Product Details</h1>
@@ -30,4 +34,11 @@
         </div>
     </div>
 </div>
+<script>
+    setTimeout(fade_out, 3000);
+
+    function fade_out() {
+        $("#M").fadeOut().empty();
+    }
+</script>
 @endsection

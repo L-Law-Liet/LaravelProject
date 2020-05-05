@@ -34,6 +34,7 @@ Route::get('product-details/{id}', 'PagesController@product');
 Route::get( 'fav/{id}','UserController@favourites');
 Route::get( 'basket/{id}','UserController@basket');
 Route::get('basket/delete/{id}', 'UserController@destroy');
+Route::get('/search', 'CategoriesController@search');
 
 Auth::routes();
 
