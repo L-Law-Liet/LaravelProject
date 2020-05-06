@@ -28,7 +28,7 @@ Route::get('sale', 'ProductsController@sale');
 Route::get('product/edit/{id}', 'ProductsController@edit');
 Route::get('product/add', 'ProductsController@create');
 Route::post('category', 'ProductsController@store');
-Route::get('product/update/{id}', 'ProductsController@update');
+Route::post('product/update/{id}', 'ProductsController@update');
 Route::get('product/delete/{id}', 'ProductsController@destroy');
 Route::get('product-details/{id}', 'PagesController@product');
 Route::get( 'fav/{id}','UserController@favourites');

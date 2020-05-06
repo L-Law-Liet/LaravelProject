@@ -14,7 +14,7 @@
             <div class="m-3">
                 <h1 class="btn-outline-info w-100 rounded-lg text-center">Product Details</h1>
             </div>
-            <form action="{{action('ProductsController@update', $product->id)}}">
+            <form action="{{action('ProductsController@update', $product->id)}}"  method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
                     <div class="rounded-lg border-info border p-1 m-3"><label class="col-2 font-weight-bold">Name: </label>
@@ -25,7 +25,9 @@
                         <textarea style="resize: none; height: 200px"  name="description" class="p-1 col rounded-lg d-block border bg-light">{{$product->description}}</textarea></div>
                     <div class="rounded-lg border-info border p-1 m-3"><label class="col-2 font-weight-bold">Discount: </label><input name="discount" class="col-9 p-1 rounded-lg border bg-light d-inline" type="text" value="{{$product->discount}}"></div>
                     <div class="rounded-lg border-info border p-1 m-3"><label class="col-2 font-weight-bold">Category: </label><input name="category" class="col-9 p-1 rounded-lg border bg-light d-inline" type="text" value="{{$product->category}}"></div>
-                    <div class="rounded-lg border-info border p-1 m-3"><label class="col-2 font-weight-bold">Path to Image: </label><input name="path" class="col-9 p-1 rounded-lg border bg-light d-inline" type="text" value="{{$product->path}}"></div>
+                    <div class="rounded-lg border-info border p-1 m-3"><label class="col-2 font-weight-bold">
+                            <abbr class="text-decoration-none mark" title="JPG PNG JPEG">Image:</abbr>
+                        </label><input name="image" class="col-8 p-1 rounded-lg border bg-light d-inline" type="file" accept=".jpg, .jpeg, .png, .gif"></div>
                 </div>
                 <div class="m-3 text-center">
                     <button type="submit" class="btn btn-success col-3"><img src="{{asset('img/save.svg')}}" alt=""></button>

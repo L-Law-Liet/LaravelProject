@@ -12,7 +12,7 @@
                    <div class="bg-info rounded-lg p-2 m-3">
                        <div class="m-4">
                            <h3 class="text-center btn-outline-warning mb-5 rounded-lg p-1" onclick="window.location='{{url("product-details", $p['id'])}}'">{{$p['name']}}</h3>
-                           <img onclick="window.location='{{url("product-details", $p['id'])}}'" class="rounded-lg" src="{{asset('img/'. $p['path'] .'.jpg')}}" alt="">
+                           <img onclick="window.location='{{url("product-details", $p['id'])}}'" class="rounded-lg" src="{{asset('img/'. $p['path'])}}" alt="">
                        </div>
                    </div>
                    @endforeach

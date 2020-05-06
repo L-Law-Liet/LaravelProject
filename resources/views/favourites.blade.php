@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="align-middle col m-1">
                                         <div class="Image rounded-lg m-1" onclick="window.location='{{url("product-details", $p->id)}}'"
-                                             style="background: url('{{asset('img/'.$p->path.'.jpg')}}') no-repeat">
+                                             style="background: url('{{asset('img/'.$p->path)}}') no-repeat">
                                         </div>
                                         <h3 class="m-4 bg-warning text-danger text-center p-1 rounded-lg ">Discount: {{$p->discount}}%</h3>
 

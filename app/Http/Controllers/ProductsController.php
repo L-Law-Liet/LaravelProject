@@ -54,28 +54,29 @@ use App\Models\Product;
         else{
             $hasD = 0;
         }
-        DB::table('products')->insert([
-            'name'=>$request->input('name'),
-            'price'=>$request->input('price'),
-            'description'=>$request->input('description'),
-            'category'=>$request->input('category'),
-            'discount'=>$request->input('discount'),
-            'hasDiscount'=>$hasD,
-            'path' => $request->input('path')
-        ]);
-//        $p = new Product();
-//        $p->name = $request->input('name');
-//        $p->price = $request->input('price');
-//        $p->description = $request->input('description');
-//        $p->discount = $request->input('discount');
-//        if ($p->discount>0){
-//            $p->hasDiscount = 1;
-//        }
-//        else{
-//            $p->hasDiscount = 0;
-//        }
-//        $p->category = $request->input('category');
-//        $p->save();
+        if (is_null(request()->file('image')) ){
+
+            DB::table('products')->insert([
+                'name'=>$request->input('name'),
+                'price'=>$request->input('price'),
+                'description'=>$request->input('description'),
+                'category'=>$request->input('category'),
+                'discount'=>$request->input('discount'),
+                'hasDiscount'=>$hasD,
+            ]);
+        }
+        else{
+            DB::table('products')->insert([
+                'name'=>$request->input('name'),
+                'price'=>$request->input('price'),
+                'description'=>$request->input('description'),
+                'category'=>$request->input('category'),
+                'discount'=>$request->input('discount'),
+                'hasDiscount'=>$hasD,
+                'path' => (time().'.'.request()->image->getClientOriginalExtension())
+            ]);
+                request()->image->move(public_path('/img'), time().'.'.request()->image->getClientOriginalExtension());
+        }
         return redirect('category')->with('ms', 'Product Created Successfully!');
     }
 
@@ -120,6 +121,13 @@ use App\Models\Product;
      */
     public function update(Request $request, $id)
     {
+        $v = $request->validate([
+            'name'  => 'required|max:50',
+            'price' => 'required|numeric',
+            'description'  => 'required',
+            'discount'  => 'required|numeric',
+            'category' => 'required|min:3'
+        ]);
         $product = Product::find($id);
         $product->name = $request->input('name');
         $product->price = $request->input('price');
@@ -132,7 +140,10 @@ use App\Models\Product;
         else{
             $product->hasDiscount = 0;
         }
-        $product->path = $request->input('path');
+        $product->path = time().'.'.request()->image->getClientOriginalExtension();
+        if ($product->path){
+            request()->image->move(public_path('/img'), $product->path);
+        }
         $product->save();
         return view('products')->with('product', $product)->with('m', 'Updated');
     }

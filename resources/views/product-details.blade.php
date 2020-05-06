@@ -29,7 +29,7 @@
                         </div>
                        <div class="col ml-3" >
                            <div style='height: 300px;
-                               background: url("{{asset('img/'.$p->path.'.jpg')}}") no-repeat'></div>
+                               background: url("{{asset('img/'.$p->path)}}") no-repeat'></div>
                            @if($p->hasDiscount)
                                <h5 class="mt-2 bg-warning p-1 rounded-lg border border-danger text-white"><s>Price: {{$p->price}}</s> <b class="text-danger">Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></b></h5>
                            @else

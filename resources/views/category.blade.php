@@ -98,7 +98,7 @@
                            </div>
                            <div class="align-middle col m-1">
                                <div class="Image rounded-lg m-1"  onclick="window.location='{{url("product-details", $p->id)}}'"
-                                    style="background: url('{{asset('img/'.$p->path.'.jpg')}}') no-repeat">
+                                    style="background: url('{{asset('img/'.$p->path)}}') no-repeat">
                                </div>
                                <p class="m-2 bg-info p-1 rounded-lg">Discount: {{$p->discount}}%</p>
                                @if($p->hasDiscount)
