@@ -48,7 +48,7 @@
                 </li>
             @endguest
             <li><div class="nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-light dropdown-toggle"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Categories
                     <img class="ml-1 mb-1" src="{{asset(url('img/grid.svg'))}}" alt=""></div>
                 <div class="mt-2 dropdown-menu bg-dark">
                     @if(count($categories)>0)

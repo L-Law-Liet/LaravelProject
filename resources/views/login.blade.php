@@ -1,4 +1,5 @@
 @section('head')
+    <title>Login</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/news.js') }}"></script>

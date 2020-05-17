@@ -14,13 +14,13 @@ class PagesController extends Controller
 {
     public function home(){
         $p = Product::all()->toArray();
-        $RandKeys = array_rand($p, 4);
+        $RandKeys = array_rand($p, 8);
         $arr = array();
-        for ($i=0; $i<4; $i++){
-            $arr[$i] = $p[$RandKeys[$i]];
+        for ($i=0; $i<8; $i++){
+            $arr[$i] = $p[$RandKeys[$i]]['id'];
         }
-        $i = random_int(0, 5);
-        return view('home.home')->with('ps', $arr)->with('i', $i);
+        $p = Product::all()->whereIn('id', $arr);
+        return view('home.home')->with('ps', $p);
     }
     public function news(){
         return view('news');

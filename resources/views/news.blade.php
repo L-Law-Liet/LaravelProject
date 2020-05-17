@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('head')
+    <title>News</title>
     <link href="{{ asset('css/news.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/news.js') }}"></script>
 @endsection

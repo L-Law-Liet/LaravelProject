@@ -1,4 +1,5 @@
 @section('head')
+    <title>Category</title>
     <link rel="stylesheet" href="{{asset('css/category.css')}}">
 @endsection
 @extends('layouts.main')
@@ -22,7 +23,7 @@
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
                 <div class="searchbar">
-                    <input class="search_input" type="text" id="search" placeholder="Product Name / Category">
+                    <input class="search_input" type="text" id="search" placeholder="Product Name">
                     <a class="search_icon"><img src="{{asset('img/search.svg')}}" alt=""></a>
                 </div>
             </div>
@@ -98,7 +99,7 @@
                            </div>
                            <div class="align-middle col m-1">
                                <div class="Image rounded-lg m-1"  onclick="window.location='{{url("product-details", $p->id)}}'"
-                                    style="background: url('{{asset('img/'.$p->path)}}') no-repeat">
+                                    style="background: url('{{asset('img/'.$p->path)}}') no-repeat; background-position: center">
                                </div>
                                <p class="m-2 bg-info p-1 rounded-lg">Discount: {{$p->discount}}%</p>
                                @if($p->hasDiscount)
@@ -113,9 +114,6 @@
                     </div>
                 @endforeach
                     {{ $products->links()}}
-
-
-
             @endif
         </div>
         <div id="s" class="w-75" style="display: none">
@@ -134,7 +132,7 @@
        if($v != '' && $v != ' '){
            $.ajax({
                type : 'get',
-               url : '{{URL::to('search')}}',
+               url : '{{URL::to('/search', ($category->name?? '')?$category->name: '')}}',
                data : {'search': $v},
                success:function (data) {
                    $('#s').html(data);

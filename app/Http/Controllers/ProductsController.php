@@ -140,8 +140,11 @@ use App\Models\Product;
         else{
             $product->hasDiscount = 0;
         }
-        $product->path = time().'.'.request()->image->getClientOriginalExtension();
-        if ($product->path){
+        if (is_null(request()->file('image')) ){
+
+        }
+        else {
+            $product->path = time().'.'.request()->image->getClientOriginalExtension();
             request()->image->move(public_path('/img'), $product->path);
         }
         $product->save();

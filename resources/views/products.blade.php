@@ -1,4 +1,5 @@
 @section('head')
+    <title>Update</title>
     <link rel="stylesheet" href="{{asset('css/products.css')}}">
 @endsection
 @extends('layouts.main')

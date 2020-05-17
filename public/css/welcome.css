@@ -1,11 +1,97 @@
-img{
+.Img{
     transition: 0.3s;
-    width: 500px;
+    width: 350px;
+    height: 300px;
     cursor: pointer;
+    background-position: center !important;
+    background-size: contain !important;
 }
-h3{
-    cursor: pointer;
+.Img:hover{
+    transform: scale(1.1);
 }
-.m-4 img:hover{
-    transform: scale(1.05);
+#Ref{
+    background-color: lightblue;
+    background-size: 400% 400%;
+    background-image: linear-gradient(270deg, lightskyblue, lightgreen);
+    animation-name: Ref;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    transition: 1s;
+}
+#Ref:hover {
+    transform: rotateY(180deg);
+}
+@keyframes Ref {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
+}
+.Dleft{
+    width: 420px;
+    transition: width 0.8s ease-in-out;
+    float: left;
+}
+.Dleft:hover {
+    width: 900px;
+}
+.Dright{
+    width: 420px;
+    transition: width 0.8s ease-in-out;
+    float: right;
+}
+.Dright .Cont:not(.H4){
+    float: right;
+}
+.Dright:hover {
+    width: 900px;
+}
+.Dright:hover article, .Dright:hover .Cost, .Dright:hover .Art{
+    display: block;
+    width: 460px;
+    animation-name: des1;
+    animation-delay: 0.8s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes des1 {
+    0%{opacity: 0}
+    100%{opacity: 1}
+}
+.Dleft:hover article, .Dleft:hover .Cost, .Dleft:hover .Art{
+    display: block;
+    width: 460px;
+    animation-name: des;
+    animation-delay: 0.8s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes des {
+    0%{opacity: 0}
+    100%{opacity: 1}
+}
+.Dright .Art{
+    display: none;
+    margin-left: -500px;
+}
+.Dleft .Art{
+    display: none;
+    margin-left: 390px;
+}
+article, .Cost{
+    display: none;
+    opacity: 0;
+}
+.Discount{
+    background-size: 400% 400%;
+    background-image: linear-gradient(270deg, lightsalmon, cyan, lightsteelblue);
+    animation-name: Discount;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+@keyframes Discount {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
 }

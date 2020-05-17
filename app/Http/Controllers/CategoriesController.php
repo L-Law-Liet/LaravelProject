@@ -105,13 +105,22 @@ class CategoriesController extends Controller
         return view('category')->with('products', $products)->with('admin', $N)->with('category', $category)
        ->with('SortType', $request->input('sort'));
     }
-    public function search(Request $request){
+    public function search(Request $request, $c=null){
         if ($request->ajax()){
             $out = '';
-            $ps = DB::table('products')->where('name', 'like', '%'.$request->search.'%')->
-            orWhere('category', 'like', '%'.$request->search.'%')->get();
+            if (!$c){
+                $ps = DB::table('products')->where('name', 'like', '%'.$request->search.'%')->get();
+            }
+            else{
+                $ps = DB::table('products')->where('name', 'like', '%'.$request->search.'%')->
+                    where('category', $c)->get();
+            }
         if ($ps){
+            $u = -1;
+            if (Auth::user()){
             $u = User::find(Auth::id());
+                $u = $u->isAdmin;
+            }
            foreach ($ps as $p){
                $out .= "   <div class=\"card bg-light card-body m-5\">
                        <div class=\"row\">
@@ -134,13 +143,13 @@ class CategoriesController extends Controller
                                            }
                                  $out .= " </article>
                                </div>";
-                   if ($u->isAdmin) {
+                   if ($u == 1) {
                        $out .= "                                 <div class=\"text-center mt-3 m-2\">
                                        <button onclick=\"window.location='".action('ProductsController@destroy', $p->id)."'\" class=\"btn btn-danger col-2\">
-                                           <img src=\"{{asset('img/trash.svg')}}\" alt=\"\"></button>
+                                           <img src=\"".asset('img/trash.svg')."\"></button>
 
                                        <button class=\"btn btn-info col-2\" onclick=\"window.location='".url('product/edit', $p->id)."'\">
-                                           <img src=\"{{asset('img/edit.svg')}}\" alt=\"\">
+                                           <img src=\"".asset('img/edit.svg')."\">
                                        </button>
                                    </div>";
                                }
@@ -164,6 +173,10 @@ class CategoriesController extends Controller
                                $out .= "</div>
                        </div>
                     </div>";
+            }
+            if ($out == ''){
+                $out = '<div class="display-4 text-secondary m-5 text-center font-weight-bold border border-info
+                        p-2 bg-warning rounded-lg">Products Not Found</div>';
             }
             return Response($out);
         }
