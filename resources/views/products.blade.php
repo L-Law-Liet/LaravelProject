@@ -13,7 +13,7 @@
         </div>
         <div class="col-8 m-5 border border-info rounded-lg bg-light ">
             <div class="m-3">
-                <h1 class="btn-outline-info w-100 rounded-lg text-center">Product Details</h1>
+                <h1 class="h1d text-center rounded-lg p-2 m-4">Product Edit</h1>
             </div>
             <form action="{{action('ProductsController@update', $product->id)}}"  method="post" enctype="multipart/form-data">
                 {{csrf_field()}}

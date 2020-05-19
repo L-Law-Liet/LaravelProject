@@ -1,8 +1,5 @@
 <nav>
     <div class="bg-dark d-flex justify-content-center">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <ul class="nav">
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('/')}}">Home
                     <img class="ml-1 mb-1" src="{{asset(url('img/home.svg'))}}" alt=""></a></li>

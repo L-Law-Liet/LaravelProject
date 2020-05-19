@@ -12,6 +12,7 @@ $categories = Category::all();
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('bootstrap-component/css/bootstrap.min.css')}}">
     <link rel="shortcut icon" href="{{asset('img/icon.png')}}">
     <script src="{{asset('bootstrap-component/js/jquery.min.js')}}"></script>
@@ -39,6 +40,40 @@ $categories = Category::all();
         /* Optional: show position indicator in red */
         ::-webkit-scrollbar-thumb {
             background: #FF0000;
+        }
+        .h1d{
+            animation-name: h1d;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            background: -webkit-linear-gradient(270deg, darkslateblue, darkred, darkgreen, darkorange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes h1d {
+            from {
+                -webkit-filter: hue-rotate(0deg);
+            }
+            to {
+                -webkit-filter: hue-rotate(-360deg);
+            }
+        }
+        .h1w{
+            animation-name: h1w;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            background: -webkit-linear-gradient(270deg, lightskyblue, lightcyan, lightgoldenrodyellow, lightsalmon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes h1w {
+            from {
+                -webkit-filter: hue-rotate(0deg);
+            }
+            to {
+                -webkit-filter: hue-rotate(-360deg);
+            }
         }
         footer {
             flex: 0 0 auto;

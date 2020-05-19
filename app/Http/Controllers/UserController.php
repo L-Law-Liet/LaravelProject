@@ -59,7 +59,7 @@ class UserController extends Controller
 //        $L = Favourites::all()->where('uid', '=', '$uid')->get();
         return view('product-details')->with('p', $p)->with('b', $L);
     }
-    function destroy($id){
+    function destroyFromBasket($id){
         $uid = Auth::id();
         DB::table('orders')->where('uid', $uid)->
         where('pid', $id)->delete();
@@ -70,5 +70,15 @@ class UserController extends Controller
 //        $pr = Product::all()->whereIn('id', $p);
         return redirect('basket')->with('products', $p);
     }
-
+    function destroyFromFavourites($id){
+        $uid = Auth::id();
+        DB::table('favourites')->where('uid', $uid)->
+        where('pid', $id)->delete();
+        $p = DB::table('products')->select('products.*')->
+        join('favourites', 'products.id', '=', 'favourites.pid')->
+        join('users', 'favourites.uid', '=', 'users.id')->
+        where('favourites.uid',  $uid)->get();
+//        $pr = Product::all()->whereIn('id', $p);
+        return redirect('favourites')->with('products', $p);
+    }
 }

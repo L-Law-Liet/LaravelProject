@@ -7,47 +7,58 @@
 .searchbar{
     margin-bottom: auto;
     margin-top: auto;
-    height: 70px;
-    background-color: lightskyblue;
+    height: 50px;
     border-radius: 40px;
     padding: 15px;
 }
 
 .search_input{
-    color: white;
     border: 0;
     outline: 0;
     background: none;
     width: 0;
-    caret-color:transparent;
-    line-height: 40px;
     transition: width 0.4s linear;
 }
 
 .searchbar:hover > .search_input{
     padding: 0 10px;
     width: 450px;
-    caret-color:white;
     transition: width 0.4s linear;
 }
-::-webkit-input-placeholder { /* Edge */
-    color: white;
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: white;
-}
-::placeholder{
-    color: white;
-}
 .search_icon{
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
     float: right;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color:white;
+
     text-decoration:none;
+}
+.Discount{
+    background-size: 400% 400%;
+    background-image: linear-gradient(270deg, lightsalmon, cyan, lightsteelblue);
+    animation-name: Discount;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+@keyframes Discount {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
+}
+.Dper{
+    background-size: 400% 400%;
+    background-image: linear-gradient(70deg, lightsteelblue, lightgreen, lightseagreen, lightcoral);
+    animation-name: Discount;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+@keyframes Dper {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
 }

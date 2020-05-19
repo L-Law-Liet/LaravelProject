@@ -16,7 +16,7 @@
                         <rect class="shape2" height="60" width="300" />
                     </svg>
                     <img class="L d-inline" src="{{asset('img/L.png')}}" alt="L">
-                    <h1 class="LOGIN d-inline">OGIN</h1>
+                    <h1 class="LOGIN h1w d-inline">OGIN</h1>
                 </div>
                 <input type="text" name="email" placeholder="Username" value="{{Request::old('email')?:''}}">
                 @if($errors->has('email'))

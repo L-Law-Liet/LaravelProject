@@ -23,7 +23,8 @@ class PagesController extends Controller
         return view('home.home')->with('ps', $p);
     }
     public function news(){
-        return view('news');
+        $news = ['New', 'Waterfall', 'Design'];
+        return view('news')->with('News', $news);
     }
     public function basket(){
         $u = Auth::id();

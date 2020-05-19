@@ -9,16 +9,20 @@
     <div id="container1">
         <div id="container2">
             <div class="content">
-                <section class="s1">
-                    <h1 class="text-light">New</h1>
-                </section>
-                <section class="s2">
-                    <h1 class="text-light">Waterfall</h1>
-                </section>
-                <section class="s3">
-                    <h1 class="text-light">Design</h1>
-                </section>
-
+                @foreach($News as $k => $n)
+                    <section class="s"
+                    style='background: url("{{asset(url("img/news".(3-$k).".png"))}}") no-repeat;
+                        background-size: cover;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        background-attachment: fixed;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;'>
+                        <h1 class="h1w text-light">{{$n}}</h1>
+                    </section>
+                    @endforeach
             </div>
         </div>
     </div>

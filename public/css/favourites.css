@@ -4,3 +4,29 @@
     background-size: cover;
     background-position: center;
 }
+.Discount{
+    background-size: 400% 400%;
+    background-image: linear-gradient(270deg, lightsalmon, cyan, lightsteelblue);
+    animation-name: Discount;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+@keyframes Discount {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
+}
+.Dper{
+    background-size: 400% 400%;
+    background-image: linear-gradient(70deg, lightsteelblue, lightgreen, lightseagreen, lightcoral);
+    animation-name: Discount;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+@keyframes Dper {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
+}

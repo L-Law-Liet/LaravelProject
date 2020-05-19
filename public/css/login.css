@@ -19,7 +19,22 @@ body{
     font-size: 48px;
     color: white;
     font-weight: 500;
+    animation-name: h1w;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    background: -webkit-linear-gradient(270deg, lightskyblue, lightcyan, lightgoldenrodyellow, lightsalmon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     }
+@keyframes h1w {
+    from {
+        -webkit-filter: hue-rotate(0deg);
+    }
+    to {
+        -webkit-filter: hue-rotate(-360deg);
+    }
+}
 .box input[type = "text"], .box input[type = "Password"], .box input[type = "email"]{
     border: 0;
     background: none;

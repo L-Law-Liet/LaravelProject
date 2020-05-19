@@ -4,12 +4,11 @@
 @endsection
 @extends('layouts.main')
 @section('content')
-    <div class="min-vh-100">
-        {{--    <a class="btn btn-info m-1 mt-5 position-fixed" href="{{url()->previous()}}"><img src="{{asset('img/undo.svg')}}" alt=""></a>--}}
+    <div class="min-vh-100"><a class="btn btn-info m-1 mt-5 position-fixed" href="{{url()->previous()}}"><img src="{{asset('img/undo.svg')}}" alt=""></a>
         <div class="d-flex justify-content-center">
             <div class="col-8 m-5 border border-info rounded-lg bg-light ">
                 <div class="m-3">
-                    <h1 class="btn-outline-info w-100 rounded-lg text-center">Add a new Product</h1>
+                    <h1 class="h1d w-100 rounded-lg text-center">Add a new Product</h1>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">

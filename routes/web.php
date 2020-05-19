@@ -33,7 +33,8 @@ Route::get('product/delete/{id}', 'ProductsController@destroy');
 Route::get('product-details/{id}', 'PagesController@product');
 Route::get( 'fav/{id}','UserController@favourites');
 Route::get( 'basket/{id}','UserController@basket');
-Route::get('basket/delete/{id}', 'UserController@destroy');
+Route::get('basket/delete/{id}', 'UserController@destroyFromBasket');
+Route::get('favourites/delete/{id}', 'UserController@destroyFromFavourites');
 Route::get('/search/{c?}', 'CategoriesController@search');
 
 Auth::routes();

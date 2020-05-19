@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('head')
     <title>{{$p->name}}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('css/pd.css')}}">
     @endsection
 @section('content')
@@ -18,7 +17,7 @@
                         <div class="card-body m-4">
                             <div  style="float: left; width: 70%; box-sizing: border-box">
                                 <div class="card mr-2 p-2 rounded-lg">
-                                    <h1 class="text-center font-weight-normal rounded-lg m-2"
+                                    <h1 class="text-center p-1 font-weight-normal rounded-lg m-2"
                                         style="background-color: #00b0ff; color: whitesmoke">{{$p->name}}</h1>
                                 <article class=" m-2 border rounded-lg"
                                 style="background-color: lightcyan">
@@ -39,11 +38,13 @@
                                 <div class="m-2 w-100" style="width: 380px;">
                                 <div style='height:300px; background: url("{{asset('img/'.$p->path)}}") no-repeat'></div>
                                    @if($p->hasDiscount)
-                                        <h5 class="font-weight-light bg-warning text-primary border border-danger p-1 m-1 rounded-lg">Discount: {{$p->discount}}%</h5>
-                                        <h5 class="font-weight-light m-1 bg-warning p-1 rounded-lg border border-danger text-white"><s>Price: ${{$p->price}}</s> <b class="text-danger">Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></b></h5>
+                                        <h5 class="font-weight-normal Dper border p-1 m-1 rounded-lg">Discount: {{$p->discount}}%</h5>
+                                        <h5 class="font-weight-normal m-1 p-1 rounded-lg border Discount">
+                                          Price: <s class="text-muted">${{$p->price}}</s>
+                                            $<u>{{$p->price-($p->discount*$p->price/100)}}</u></h5>
                                 @else
-                                        <h5 class="font-weight-light m-1 bg-light p-1 rounded-lg border border-primary">Discount: {{$p->discount}}%</h5>
-                                        <h5 class="font-weight-light m-1 bg-light p-1 rounded-lg border border-primary">Price: ${{$p->price}}</h5>
+                                        <h5 class="font-weight-light m-1 bg-light p-1 rounded-lg border">Discount: {{$p->discount}}%</h5>
+                                        <h5 class="font-weight-light m-1 bg-light p-1 rounded-lg border">Price: ${{$p->price}}</h5>
                                 @endif
                                 @if(Auth::check() && !Auth::user()->isAdmin)
                                     <div class="mt-3">

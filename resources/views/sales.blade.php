@@ -6,7 +6,7 @@
 @section('content')
     <div class="min-vh-100">
         <div class="m-4">
-            <h1 class="btn-danger text-center text-warning rounded-lg text-center w-100 p-2">
+            <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-4">
                     {{$title}}
 
             </h1>
@@ -21,10 +21,14 @@
                             <div class="row">
                                 <div class="col-7 m-2">
                                     <div class="m-1 btn-outline-primary btn w-100" onclick="window.location='{{url("product-details", $p->id)}}'">
-                                        <h3>{{$p->name}}</h3></div>
-                                    <div class="m-1"><h4>Category: {{$p->category}}</h4></div>
-                                    <div class="m-1 btn-warning p-1 rounded-lg"><h5 class="text-danger"><s class="text-white">Price: {{$p->price}}</s>
-                                            <b class="text-danger">Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></b></h5></div>
+                                        <h3 class="font-weight-normal">{{$p->name}}</h3></div>
+                                    <div class="m-1 p-1"><h4>Category: {{$p->category}}</h4></div>
+                                    <div class="m-1 border p-1 rounded-lg">
+                                        <h5 class="font-weight-normal">
+                                            <s>Price: {{$p->price}}</s>
+                                            Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u>
+                                        </h5>
+                                    </div>
                                     <div class="card card-body bg-light m-1">
                                         <h6 class="text-center">Description</h6>
                                         <article>
@@ -53,7 +57,7 @@
                                     <div class="Image rounded-lg m-1" onclick="window.location='{{url("product-details", $p->id)}}'"
                                          style="background: url('{{asset('img/'.$p->path)}}') no-repeat; background-position: center">
                                     </div>
-                                    <h3 class="m-4 bg-warning text-danger text-center p-1 rounded-lg ">Discount: {{$p->discount}}%</h3>
+                                    <h3 class="m-4 border-danger border font-weight-normal text-center p-1 rounded-lg ">Discount: {{$p->discount}}%</h3>
 
                                 </div>
                             </div>

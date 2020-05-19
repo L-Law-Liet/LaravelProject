@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="m-4">
-        <h1 class="btn-outline-info text-center  rounded-lg text-center w-100 p-1">
+        <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-4">
             @if($category == '')
                 All Categories
             @else
@@ -22,31 +22,33 @@
     </div>
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
-                <div class="searchbar">
+                <div class="searchbar bg-light">
                     <input class="search_input" type="text" id="search" placeholder="Product Name">
                     <a class="search_icon"><img src="{{asset('img/search.svg')}}" alt=""></a>
                 </div>
             </div>
         </div>
 
-    <div class="text-center">
-        <div class="container btn-warning w-50 rounded-lg p-4 mt-5">
-            <h3 class="text-primary">Sorting: </h3>
-            <form action="{{(!empty($category->id)) ? url('category', $category->id) : url('category')}}" method="get">
-                <div class="input-group">
-                    <select name="sort" class="custom-select">
-                        <option {{($SortType == 'default')? 'selected' : ''}} class="additional-option" value="default">Default</option>
-                        <option {{($SortType == 'pricea')? 'selected' : ''}} value="pricea">Price Ascending</option>
-                        <option {{($SortType == 'priced')? 'selected' : ''}} value="priced">Price Descending</option>
-                        <option {{($SortType == 'az')? 'selected' : ''}} value="az">A → Z</option>
-                        <option {{($SortType == 'za')? 'selected' : ''}} value="za">Z → A</option>
-                        <option {{($SortType == 'new')? 'selected' : ''}} value="new">New items</option>
-                    </select>
-                    <div class="input-group-append ml-1">
-                        <input type="submit" class="btn btn-outline-primary" value="Apply">
+    <div class="justify-content-center d-flex">
+        <div class="w-75 rounded-lg mt-5">
+            <div class="card mr-5 ml-5 p-3">
+                <form action="{{(!empty($category->id)) ? url('category', $category->id) : url('category')}}" method="get">
+                    <div class="input-group">
+                        <h4 class="font-weight-normal mr-1">Sorting: </h4>
+                        <select name="sort" class="custom-select">
+                            <option {{($SortType == 'default')? 'selected' : ''}} class="additional-option" value="default">Default</option>
+                            <option {{($SortType == 'pricea')? 'selected' : ''}} value="pricea">Price Ascending</option>
+                            <option {{($SortType == 'priced')? 'selected' : ''}} value="priced">Price Descending</option>
+                            <option {{($SortType == 'az')? 'selected' : ''}} value="az">A → Z</option>
+                            <option {{($SortType == 'za')? 'selected' : ''}} value="za">Z → A</option>
+                            <option {{($SortType == 'new')? 'selected' : ''}} value="new">New items</option>
+                        </select>
+                        <div class="input-group-append ml-1">
+                            <input type="submit" class="btn btn-outline-primary" value="Apply">
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     @if($admin)
@@ -101,14 +103,9 @@
                                <div class="Image rounded-lg m-1"  onclick="window.location='{{url("product-details", $p->id)}}'"
                                     style="background: url('{{asset('img/'.$p->path)}}') no-repeat; background-position: center">
                                </div>
-                               <p class="m-2 bg-info p-1 rounded-lg">Discount: {{$p->discount}}%</p>
-                               @if($p->hasDiscount)
-                                   <p class="m-2 bg-warning p-1 rounded-lg border border-danger text-white">
-                                       <s>Price: {{$p->price}}</s> <b class="text-danger">Discount price: $
-                                           <u>{{$p->price-($p->discount*$p->price/100)}}</u></b></p>
-                               @else
-                                   <p class="m-2 bg-light p-1 rounded-lg border border-primary">Price: {{$p->price}}</p>
-                               @endif
+                                   <p class="m-2 border p-1 rounded-lg {{($p->hasDiscount)?'Dper':''}}">Discount: {{$p->discount}}%</p>
+                                   <p class="m-2 p-1 rounded-lg border  {{($p->hasDiscount)?'Discount':''}}">
+                                       Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></p>
                                 </div>
                        </div>
                     </div>

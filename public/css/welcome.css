@@ -95,3 +95,45 @@ article, .Cost{
     50% {background-position: 100% 56%}
     100% {background-position: 0 45%}
 }
+#Btn{
+    border-radius: 50%;
+    width: 60px;
+    animation-name: Btn;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    background-size: 400% 400%;
+    background-image: linear-gradient(70deg, lightsteelblue, lightseagreen, lightcoral,
+    lightpink, lightsalmon, cyan,  cornsilk, greenyellow, cornflowerblue);
+    transition: 1s;
+}
+@keyframes Btn {
+    0% {background-position: 0 45%}
+    50% {background-position: 100% 56%}
+    100% {background-position: 0 45%}
+}
+#Btn{
+    transition: 1s;
+}
+#Btn:hover{
+    border-radius: 0;
+    width: 200px;
+}
+#Btn:hover #arr{
+    transition: 1s;
+    opacity: 0;
+}
+#arr{
+    transition: 1s;
+}
+#word{
+    transition: 1s;
+    margin-left: -40px;
+    margin-top: -8px;
+    position: absolute;
+    opacity: 0;
+}
+#Btn:hover #word{
+    transition: 1s;
+    opacity: 1;
+}

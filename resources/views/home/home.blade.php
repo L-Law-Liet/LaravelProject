@@ -5,7 +5,7 @@
 <script type="text/javascript" src="{{ asset('js/welcome.js') }}"></script>
 @endsection
 @section('content')
-    <h1 class="text-center font-weight-normal rounded-lg p-2 m-4">In our store you will find</h1>
+    <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-4">In our store you will find</h1>
     <div class="m-5">
         <?$i = 0?>
         @foreach($ps as $k => $p)
@@ -58,5 +58,10 @@
            <?$i++?>
         @endforeach
     </div>
-    <h1 onclick="window.location='{{url('category')}}'" class="text-center btn-primary rounded-lg p-2 m-4">Click to More...</h1>
+    <div id="container" class="justify-content-center d-flex" onclick="window.location='{{url('category')}}'">
+        <button class="border-0 m-3 p-3" id="Btn">
+            <span id="arr" class="fa fa-angle-right" style="font-size: 25px"></span>
+            <span id="word" style="font-size: 25px">More...</span>
+        </button>
+    </div>
 @endsection

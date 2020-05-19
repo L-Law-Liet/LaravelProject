@@ -175,8 +175,8 @@ class CategoriesController extends Controller
                     </div>";
             }
             if ($out == ''){
-                $out = '<div class="display-4 text-secondary m-5 text-center font-weight-bold border border-info
-                        p-2 bg-warning rounded-lg">Products Not Found</div>';
+                $out = '<div class="bg-light text-secondary m-5 text-center font-weight-bold border border-info
+                        p-2 rounded-lg">Products Not Found</div>';
             }
             return Response($out);
         }
