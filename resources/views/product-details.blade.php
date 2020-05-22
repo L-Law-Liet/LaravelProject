@@ -71,13 +71,15 @@
                             <div class="clearfix"></div>
                             @if(Auth::check() && !Auth::user()->isAdmin)
                                 <div class="row w-100 m-3">
-                                    <div class="text-center col-6 bg-primary m-2 p-4 rounded-lg">
-                                        <h5 class="font-weight-light text-light mb-3">Add to Cart</h5>
+                                    <div class="text-center col-6 border m-2 p-4 rounded-lg"
+                                    style="background: whitesmoke">
+                                        <h5 class="font-weight-light mb-3">Add to Cart</h5>
                                         <a onclick="f()">
                                             <img class="order" src="{{asset('img/commerce.svg')}}" alt=""></a>
                                     </div>
-                                    <div class="text-center col bg-success m-2 p-4 rounded-lg">
-                                        <h5 class="font-weight-light text-light mb-3">Add to Favourites</h5>
+                                    <div class="text-center col border m-2 p-4 rounded-lg"
+                                         style="background: whitesmoke">
+                                        <h5 class="font-weight-light mb-3">Add to Favourites</h5>
                                         <a onclick="window.location='{{url('fav', $p->id)}}'">
                                             <img style="filter: invert{{($f ?? '')? '(100%);' : '(0);'}}"
                                                  class="order" id="fav" src="{{asset('img/interface.svg')}}" alt=""></a>

@@ -82,24 +82,30 @@ class UserController extends Controller
 //        $pr = Product::all()->whereIn('id', $p);
         return redirect('favourites')->with('products', $p);
     }
-    function update($id, Request $request){
+    function update(Request $request){
         $v = $request->validate([
             'firstname'  => 'required|max:190',
             'lastname'  => 'required|max:100',
-            'phone' => 'required|numeric|size:11'
+            'phone' => 'required'
         ]);
-        $u = User::find($id);
+        $u = Auth::user();
         $u->firstname = $request->input('firstname');
         $u->lastname = $request->input('lastname');
         $u->phone = $request->input('phone');
-        if (is_null(request()->file('image')) ){
-
-        }
-        else {
+        $u->save();
+        return view('layouts.profile')->with('u', $u)->with('m', 'Updated');
+    }
+    function profileImage(Request $request){
+        if ($request->ajax()){
+            $u = Auth::user();
             $u->photo = time().'.'.request()->image->getClientOriginalExtension();
             request()->image->move(public_path('/img'), $u->photo);
+            $u->save();
+            $out = "<div style=\"background: url('".asset((is_null($u->photo))?'img/profile.jpg':'img/'.$u->photo) . "') no-repeat;
+                            height: 300px;
+                            width: 300px;
+                            background-size: 300px 300px\" class=\"rounded-lg m-auto\"></div>";
+            echo $out;
         }
-        $u->save();
-        return view('profile')->with('u', $u)->with('m', 'Updated');
     }
 }

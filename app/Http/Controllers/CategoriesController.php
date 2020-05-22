@@ -155,6 +155,7 @@ class CategoriesController extends Controller
             ->with('SortType', $request->input('sort'));
     }
     public function search($c=null, $sortType=null, Request $request){
+
         if ($request->ajax()){
             if ($c){
                 $category = Category::all()->where  ('name', '=', "$c")->first->get();
@@ -210,7 +211,7 @@ class CategoriesController extends Controller
                                </div>
                                <p class=\"m-2 border p-1 rounded-lg ". (($p->hasDiscount)?'Dper':'') ."\">Discount: $p->discount%</p>
                                 <p class=\"m-2 p-1 rounded-lg border ". (($p->hasDiscount)?'Discount':''). "\">
-                                        Discount price: $<u>". $p->price-($p->discount*$p->price/100)."</u></p>";
+                                        Discount price: $<u>". ($p->price-($p->discount*$p->price/100))."</u></p>";
 
                     $out .= "</div>
                        </div>
