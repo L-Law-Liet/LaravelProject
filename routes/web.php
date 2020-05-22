@@ -21,10 +21,11 @@ Route::get('/favourites', 'PagesController@favourites');
 Route::get('/basket', 'PagesController@basket');
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@index');
+Route::get('/profile', 'PagesController@profile');
 Route::get('/register', 'RegisterController@getSignup');
 Route::post('/register', 'RegisterController@postSignup');
 Route::get('category/{id?}', 'CategoriesController@show');
-Route::get('sale', 'ProductsController@sale');
+Route::get('/sale', 'ProductsController@sale');
 Route::get('product/edit/{id}', 'ProductsController@edit');
 Route::get('product/add', 'ProductsController@create');
 Route::post('category', 'ProductsController@store');
@@ -35,7 +36,8 @@ Route::get( 'fav/{id}','UserController@favourites');
 Route::get( 'basket/{id}','UserController@basket');
 Route::get('basket/delete/{id}', 'UserController@destroyFromBasket');
 Route::get('favourites/delete/{id}', 'UserController@destroyFromFavourites');
-Route::get('/search/{c?}', 'CategoriesController@search');
+Route::get('/search/{c?}/{sort?}', 'CategoriesController@search');
+
 
 Auth::routes();
 

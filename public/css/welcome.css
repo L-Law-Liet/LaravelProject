@@ -4,7 +4,7 @@
     height: 300px;
     cursor: pointer;
     background-position: center !important;
-    background-size: contain !important;
+    background-size: 350px 300px !important;
 }
 .Img:hover{
     transform: scale(1.1);

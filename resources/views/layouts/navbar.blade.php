@@ -28,14 +28,19 @@
             @else
                 <li class="nav-item dropdown  m-1 mr-3 ml-3">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{ Auth::user()->firstname }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{ url('profile') }}">
+                            <i class="fa fa-user m-1" style="font-size: 22px"></i>
+                            {{ __('Profile') }}
+                        </a>
                         <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }} <img class="ml-1 mb-1" src="{{asset(url('img/logout.svg'))}}" alt="">
+                            <img class="ml-1 mb-1" src="{{asset(url('img/logout.svg'))}}" alt="">
+                            {{ __('Logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

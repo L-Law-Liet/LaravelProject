@@ -18,11 +18,18 @@
                     <form action="{{route('register')}}" method="post" novalidate>
                         @csrf
                         <div>
-                            <input class="t {{$errors->has('name') ? 'border border-danger' : ''}}" type="text"
-                                   placeholder="First Name" name="name" autocomplete="on" value="{{Request::old('name')?:''}}" maxlength="20">
-                            @if($errors->has('name'))
+                            <input class="t {{$errors->has('firstname') ? 'border border-danger' : ''}}" type="text"
+                                   placeholder="First Name" name="firstname" autocomplete="on" value="{{Request::old('firstname')?:''}}" maxlength="20">
+                            @if($errors->has('firstname'))
                                 <span class="text-danger">
-                                    {{$errors->first('name')}}
+                                    {{$errors->first('firstname')}}
+                                </span>
+                            @endif
+                            <input class="t mt-3 {{$errors->has('lastname') ? 'border border-danger' : ''}}" type="text"
+                                   placeholder="Last Name" name="lastname" autocomplete="on" value="{{Request::old('lastname')?:''}}" maxlength="20">
+                            @if($errors->has('lastname'))
+                                <span class="text-danger">
+                                    {{$errors->first('lastname')}}
                                 </span>
                             @endif
                             <input class="t mt-3 {{$errors->has('email') ? 'border border-danger' : ''}}" type="email"
@@ -30,6 +37,13 @@
                             @if($errors->has('email'))
                                 <span class="text-danger">
                                     {{$errors->first('email')}}
+                                </span>
+                            @endif
+                            <input class="t mt-3 {{$errors->has('phone') ? 'border border-danger' : ''}}" type="tel" autocomplete="on"  name="phone"
+                                   placeholder="8-777-444-4774" pattern="[8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="{{Request::old('phone')?:''}}" maxlength="11">
+                            @if($errors->has('phone'))
+                                <span class="text-danger">
+                                    {{$errors->first('phone')}}
                                 </span>
                             @endif
                             <input class="t mt-3 {{$errors->has('password') ? 'border border-danger' : ''}}" type="password" placeholder="Password" name="password" maxlength="20">

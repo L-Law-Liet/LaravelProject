@@ -63,57 +63,59 @@
                 <h4>Product Deleted</h4>
             </div>
         @endif
-        <div id="ns" class="w-75">
+        <div class="w-75">
             @if(count($products)>0)
-                @foreach($products as $p)
-                    <div class="card bg-light card-body m-5">
-                       <div class="row">
-                           <div class="col-7 m-2">
-                               <div class="m-1">
-                                   <h3 class="btn-outline-primary btn w-100 border-right-0 border-left-0 rounded-0 btn-lg"
-                                       onclick="window.location='{{url("product-details", $p->id)}}'">{{$p->name}}</h3>
-                               </div>
-                               <div class="m-1"><h4>Category: {{$p->category}}</h4></div>
-                               <div class="m-1"><h5>Price: ${{$p->price}}</h5></div>
-                               <div class="card card-body bg-light m-1">
-                                   <h6 class="text-center">Description</h6>
-                                   <article>
-                                       {{$p->description}}
-                                       @if(strlen($p->description)<50)
-                                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam
-                                           asperiores at beatae consectetur cupiditate debitis delectus, dolorem enim, facilis
-                                           impedit incidunt ipsa iusto laboriosam, laudantium molestiae odio omnis optio pariatur
-                                           perspiciatis quasi quidem repudiandae sapiente ullam unde velit voluptatem?
-                                           @endif
-                                   </article>
-                               </div>
+                <div id="ns">
+                    @foreach($products as $p)
+                        <div id="Inner" class="card bg-light card-body m-5">
+                            <div class="row">
+                                <div class="col-7 m-2">
+                                    <div class="m-1">
+                                        <h3 class="btn-outline-primary btn w-100 border-right-0 border-left-0 rounded-0 btn-lg"
+                                            onclick="window.location='{{url("product-details", $p->id)}}'">{{$p->name}}</h3>
+                                    </div>
+                                    <div class="m-1"><h4>Category: {{$p->category}}</h4></div>
+                                    <div class="m-1"><h5>Price: ${{$p->price}}</h5></div>
+                                    <div class="card card-body bg-light m-1">
+                                        <h6 class="text-center">Description</h6>
+                                        <article>
+                                            {{$p->description}}
+                                            @if(strlen($p->description)<50)
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam
+                                                asperiores at beatae consectetur cupiditate debitis delectus, dolorem enim, facilis
+                                                impedit incidunt ipsa iusto laboriosam, laudantium molestiae odio omnis optio pariatur
+                                                perspiciatis quasi quidem repudiandae sapiente ullam unde velit voluptatem?
+                                            @endif
+                                        </article>
+                                    </div>
 
-                               @if($admin)
-                                   <div class="text-center mt-3 m-2">
-                                       <button onclick="window.location='{{action('ProductsController@destroy', $p->id)}}'" class="btn btn-danger col-2">
-                                           <img src="{{asset('img/trash.svg')}}" alt=""></button>
+                                    @if($admin)
+                                        <div class="text-center mt-3 m-2">
+                                            <button onclick="window.location='{{action('ProductsController@destroy', $p->id)}}'" class="btn btn-danger col-2">
+                                                <img src="{{asset('img/trash.svg')}}" alt=""></button>
 
-                                       <button class="btn btn-info col-2" onclick="window.location='{{url('product/edit', $p->id)}}'">
-                                           <img src="{{asset('img/edit.svg')}}" alt="">
-                                       </button>
-                                   </div>
-                               @endif
-                           </div>
-                           <div class="align-middle col m-1">
-                               <div class="Image rounded-lg m-1"  onclick="window.location='{{url("product-details", $p->id)}}'"
-                                    style="background: url('{{asset('img/'.$p->path)}}') no-repeat; background-position: center">
-                               </div>
-                                   <p class="m-2 border p-1 rounded-lg {{($p->hasDiscount)?'Dper':''}}">Discount: {{$p->discount}}%</p>
-                                   <p class="m-2 p-1 rounded-lg border  {{($p->hasDiscount)?'Discount':''}}">
-                                       Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></p>
+                                            <button class="btn btn-info col-2" onclick="window.location='{{url('product/edit', $p->id)}}'">
+                                                <img src="{{asset('img/edit.svg')}}" alt="">
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
-                       </div>
-                    </div>
-                @endforeach
-                    {{ $products->links()}}
+                                <div class="align-middle col m-1">
+                                    <div class="Image rounded-lg m-1"  onclick="window.location='{{url("product-details", $p->id)}}'"
+                                         style="background: url('{{asset('img/'.$p->path)}}') no-repeat;">
+                                    </div>
+                                    <p class="m-2 border p-1 rounded-lg {{($p->hasDiscount)?'Dper':''}}">Discount: {{$p->discount}}%</p>
+                                    <p class="m-2 p-1 rounded-lg border  {{($p->hasDiscount)?'Discount':''}}">
+                                        Discount price: $<u>{{$p->price-($p->discount*$p->price/100)}}</u></p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div id="page">
+                    {{$products->links()}}
+                </div>
             @endif
-        </div>
-        <div id="s" class="w-75" style="display: none">
         </div>
     </div>
 </div>
@@ -126,22 +128,19 @@
     }
     $('#search').on('keyup', function () {
         $v = $(this).val();
-       if($v != '' && $v != ' '){
+        if($v.trim() != ''){
+            $('#page').hide();
+        }
+        else $('#page').show();
+        console.log('N');
            $.ajax({
                type : 'get',
-               url : '{{URL::to('/search', ($category->name?? '')?$category->name: '')}}',
+               url : '{{URL::to('/search', [(($category != '')?$category->name: 'WRRRFIIIS'), $SortType])}}',
                data : {'search': $v},
                success:function (data) {
-                   $('#s').html(data);
-                   $('#s').show();
-                   $('#ns').hide();
+                   $('#ns').html(data);
                }
            });
-       }
-       else{
-           $('#ns').show();
-           $('#s').hide();
-       }
     })
 </script>
 @endsection

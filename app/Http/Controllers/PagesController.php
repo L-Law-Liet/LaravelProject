@@ -70,4 +70,8 @@ class PagesController extends Controller
 //        $L = Favourites::all()->where('uid', '=', '$uid')->get();
         return view('product-details')->with('p', $p)->with('f', $L);
     }
+    public function profile(){
+        $u = Auth::user();
+        return view('layouts.profile')->with('u', $u);
+    }
 }

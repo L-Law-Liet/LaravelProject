@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Favourites;
 use App\Models\Product;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -80,5 +81,25 @@ class UserController extends Controller
         where('favourites.uid',  $uid)->get();
 //        $pr = Product::all()->whereIn('id', $p);
         return redirect('favourites')->with('products', $p);
+    }
+    function update($id, Request $request){
+        $v = $request->validate([
+            'firstname'  => 'required|max:190',
+            'lastname'  => 'required|max:100',
+            'phone' => 'required|numeric|size:11'
+        ]);
+        $u = User::find($id);
+        $u->firstname = $request->input('firstname');
+        $u->lastname = $request->input('lastname');
+        $u->phone = $request->input('phone');
+        if (is_null(request()->file('image')) ){
+
+        }
+        else {
+            $u->photo = time().'.'.request()->image->getClientOriginalExtension();
+            request()->image->move(public_path('/img'), $u->photo);
+        }
+        $u->save();
+        return view('profile')->with('u', $u)->with('m', 'Updated');
     }
 }
