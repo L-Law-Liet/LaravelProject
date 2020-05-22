@@ -91,14 +91,14 @@ use App\Models\Product;
         $product = Product::all()->where('id', '=', "$id")->first->get();
 
     }
-        public function sale()
-        {
-            $products = Product::where('discount', '>', '0')->orderBy('discount', 'desc')->paginate(6);
-            $u = Auth::id();
-            $a = User::all()->where('id', '=', $u)->first->toArray();
-            $L = $a['isAdmin'];
-            return view('sales')->with('products', $products)->with('title', 'Sales Products $$')->with('admin', $L);
-        }
+    public function sale()
+    {
+        $products = Product::where('discount', '>', '0')->orderBy('discount', 'desc')->paginate(6);
+        $u = Auth::id();
+        $a = User::all()->where('id', '=', $u)->first->toArray();
+        $L = $a['isAdmin'];
+        return view('sales')->with('products', $products)->with('title', 'Sales Products $$')->with('admin', $L);
+    }
 
      /**
      * Show the form for editing the specified resource.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Favourites;
+use App\Feedback;
 use App\Models\Product;
 use App\Order;
 use Illuminate\Http\Request;
@@ -67,8 +68,8 @@ class PagesController extends Controller
         join('users', 'favourites.uid', '=', 'users.id')->
         join('products', 'favourites.pid', '=', 'products.id')->
         first();
-//        $L = Favourites::all()->where('uid', '=', '$uid')->get();
-        return view('product-details')->with('p', $p)->with('f', $L);
+        $fb = Feedback::all()->where('pId', $id);
+        return view('product-details')->with('p', $p)->with('f', $L)->with('fbs', $fb);
     }
     public function profile(){
         $u = Auth::user();

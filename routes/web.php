@@ -39,7 +39,7 @@ Route::get( 'basket/{id}','UserController@basket');
 Route::get('basket/delete/{id}', 'UserController@destroyFromBasket');
 Route::get('favourites/delete/{id}', 'UserController@destroyFromFavourites');
 Route::get('/search/{c?}/{sort?}', 'CategoriesController@search');
-
+Route::get('/feedback/{pid}', 'FeedbackController@create');
 
 Auth::routes();
 

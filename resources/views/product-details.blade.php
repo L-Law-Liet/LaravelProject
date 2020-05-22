@@ -106,76 +106,86 @@
                         <div class="col-10 card bg-light">
 
                             <h2 class="text-center font-weight-normal p-1 rounded-lg m-2 text-muted">Comments</h2>
+                                @if(Auth::user())
                                 <div class="justify-content-center d-flex">
                                     <div class="w-100">
                                         <div class="container p-4">
-                                            <form class="p-3 rounded-lg card" action="">
+                                            <form class="p-3 rounded-lg card" action="{{action('FeedbackController@create', $p->id)}}">
 
                                                 <h1 class="text-center font-weight-normal rounded-lg"
-                                                style="background-color: #00b0ff; color: whitesmoke">Your Feedback</h1>
+                                                    style="background-color: #00b0ff; color: whitesmoke">Your Feedback</h1>
                                                 <div>
                                                     <div class="rating">
-                                                        <input type="radio" name="rating" value="5" id="5">
+                                                        <input type="radio" name="rating" required value="5" id="5">
                                                         <label for="5">☆</label>
-                                                        <input type="radio" name="rating" value="4" id="4">
+                                                        <input type="radio" name="rating" required value="4" id="4">
                                                         <label for="4">☆</label>
-                                                        <input type="radio" name="rating" value="3" id="3">
+                                                        <input type="radio" name="rating" required value="3" id="3">
                                                         <label for="3">☆</label>
-                                                        <input type="radio" name="rating" value="2" id="2">
+                                                        <input type="radio" name="rating" required value="2" id="2">
                                                         <label for="2">☆</label>
-                                                        <input type="radio" name="rating" value="1" id="1">
+                                                        <input type="radio" name="rating" required value="1" id="1">
                                                         <label for="1">☆</label>
                                                     </div>
                                                     <div>
                                                         <div class="form-group">
                                                             <label for="comment">Your Comment:</label>
-                                                            <textarea style="resize: none" class="form-control" rows="5" id="comment"></textarea>
+                                                            <textarea name="comment" style="resize: none" class="form-control" required rows="5" id="comment"></textarea>
                                                         </div>
                                                     </div>
+                                                    <input class="btn btn-outline-primary" type="submit" value="Send">
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+                                    @endif
                             <div class="justify-content-center d-flex">
                                 <div class="container m-2">
                                     <h2 class="text-center font-weight-normal p-1 rounded-lg m-2"
                                         style="background-color: #00b0ff; color: whitesmoke">Feedbacks</h2>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                                                    <p class="text-secondary text-center">15 Minutes Ago</p>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <p>
-                                                        <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a>
-                                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-
-                                                    </p>
-                                                    <div class="clearfix"></div>
-                                                    <div>
-                                                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic
-                                                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                                                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                                    </div>
-                                                    <div>
-                                                        <p>
-                                                            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
-                                                            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                                                        </p>
+                                    @if(count($fbs)>0)
+                                        @foreach($fbs as $fb)
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <img src="{{asset('img/'.$fb->image)}}" class="img-fluid"/>
+                                                            <p class="text-secondary text-center">{{$fb->created_at}}</p>
+                                                        </div>
+                                                        <div class="col-md-10">
+                                                            <div>
+                                                                <p class="float-left"><strong>{{$fb->name}}</strong></p>
+                                                               <div class="float-right">
+                                                                   @for($i=0; $i<5; $i++)
+                                                                       <span class=""><i class="{{($i<$fb->rate)?'text-warning':''}} fa fa-star"></i></span>
+                                                                   @endfor
+                                                               </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div>
+                                                                <p>{{$fb->comment}}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p>
+                                                                    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                                                                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
+                                        @else
+
+                                        <div class="card m-3">
+                                            <div class="card-body">
+                                                <p class="text-center text-muted"
+                                                style="font-size: 30px">Not Have Feedbacks</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
