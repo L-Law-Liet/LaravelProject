@@ -61,6 +61,12 @@
                                 </div>
                             </div>
                         @endforeach
+                    @if(!(count($products)>0))
+                                <div class="card bg-light text-center card-body m-5"
+                                style="font-size: 30px">
+                                    Your favourites is empty
+                                </div>
+                        @endif
 
                 </div>
             </div>

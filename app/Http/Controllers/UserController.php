@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Favourites;
+use App\Feedback;
 use App\Models\Product;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class UserController extends Controller
         join('products', 'favourites.pid', '=', 'products.id')->first();
 
 //        $L = Favourites::all()->where('uid', '=', '$uid')->get();
-        return view('product-details')->with('p', $p)->with('f', $L);
+        $fb = Feedback::all()->where('pId', $id);
+        return view('product-details')->with('p', $p)->with('f', $L)->with('fbs', $fb);
     }
     function basket($id, Request $request){
         $uid = Auth::id();
@@ -58,7 +60,9 @@ class UserController extends Controller
         join('products', 'orders.pid', '=', 'products.id')->first();
 
 //        $L = Favourites::all()->where('uid', '=', '$uid')->get();
-        return view('product-details')->with('p', $p)->with('b', $L);
+
+        $fb = Feedback::all()->where('pId', $id);
+        return view('product-details')->with('p', $p)->with('b', $L)->with('fbs', $fb);
     }
     function destroyFromBasket($id){
         $uid = Auth::id();
