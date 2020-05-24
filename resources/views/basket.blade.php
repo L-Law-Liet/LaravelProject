@@ -58,8 +58,12 @@
 
                                 </div>
                                 <div class="col">
-                                    <button onclick="window.location='{{action('UserController@destroyFromBasket', $p->id)}}'" class="btn btn-danger">
-                                        <img src="{{asset('img/trash.svg')}}" alt=""></button>
+                                    <form action="{{action('UserController@destroyFromBasket', $p->id)}}" method="post">
+                                        @method('DELETE')
+                                        {{csrf_field()}}
+                                        <button type="submit" class="btn btn-danger">
+                                            <img src="{{asset('img/trash.svg')}}" alt=""></button>
+                                    </form>
                                 </div>
                                 <div class="col-4">
                                     <p class="border text-center p-1 rounded-lg" style="font-size: 20px">

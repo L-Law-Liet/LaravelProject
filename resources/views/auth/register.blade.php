@@ -40,7 +40,7 @@
                                 </span>
                             @endif
                             <input class="t mt-3 {{$errors->has('phone') ? 'border border-danger' : ''}}" type="tel" autocomplete="on"  name="phone"
-                                   placeholder="8-777-444-4774" pattern="[8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="{{Request::old('phone')?:''}}" maxlength="11">
+                                   placeholder="8-777-444-4774" pattern="[8]{1}[0-9]{3}[0-9]{3}[0-9]{4}" required value="{{Request::old('phone')?:''}}" maxlength="11">
                             @if($errors->has('phone'))
                                 <span class="text-danger">
                                     {{$errors->first('phone')}}

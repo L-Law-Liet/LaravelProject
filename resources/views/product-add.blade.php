@@ -4,7 +4,7 @@
 @endsection
 @extends('layouts.main')
 @section('content')
-    <div class="min-vh-100"><a class="btn btn-info m-1 mt-5 position-fixed" href="{{url()->previous()}}"><img src="{{asset('img/undo.svg')}}" alt=""></a>
+    <div class="min-vh-100">
         <div class="d-flex justify-content-center">
             <div class="col-8 m-5 border border-info rounded-lg bg-light ">
                 <div class="m-3">

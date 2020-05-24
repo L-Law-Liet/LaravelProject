@@ -5,7 +5,6 @@
 @extends('layouts.main')
 @section('content')
 <div class="min-vh-100">
-    <a class="btn btn-info m-1 mt-5 position-fixed" href="{{url()->previous()}}"><img src="{{asset('img/undo.svg')}}" alt=""></a>
     <div class="d-flex justify-content-center">
         <div id="M" style="min-height: 18px; opacity: 80%; z-index: 10; display: {{($m ?? '')? 'block;' : 'none;'}}"
              class="bg-primary text-center text-white m-4 w-50 rounded-lg position-absolute">
@@ -16,6 +15,7 @@
                 <h1 class="h1d text-center rounded-lg p-2 m-4">Product Edit</h1>
             </div>
             <form action="{{action('ProductsController@update', $product->id)}}"  method="post" enctype="multipart/form-data">
+                @method('PUT')
                 {{csrf_field()}}
                 <div>
                     <div class="rounded-lg border-info border p-1 m-3"><label class="col-2 font-weight-bold">Name: </label>

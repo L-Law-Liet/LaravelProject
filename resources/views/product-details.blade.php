@@ -150,7 +150,7 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <img src="{{asset('img/'.$fb->image)}}" class="img-fluid"/>
+                                                            <img src="{{asset('img/'.(($fb->image)?$fb->image:'profile.jpg'))}}" class="img-fluid"/>
                                                             <p class="text-secondary text-center">{{$fb->created_at}}</p>
                                                         </div>
                                                         <div class="col-md-10">

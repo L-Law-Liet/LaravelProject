@@ -31,6 +31,7 @@
                         </div>
                         <div class="m-1">
                             <form method="post" name="photo" id="imageUploadForm" enctype="multipart/form-data" action="{{action('UserController@profileImage')}}">
+                                @method('PUT')
                                 {{csrf_field()}}
                                 <input name="image" id="ImageBrowse" class="p-1 border bg-light rounded-lg" type="file"
                                        accept=".jpg, .jpeg, .png, .gif" hidden="hidden">
@@ -41,6 +42,7 @@
                     <div class="col-8 border-left-0 border rounded-lg">
                         <div class="">
                             <form action="{{action('UserController@update')}}" method="post">
+                                @method('PUT')
                                 {{csrf_field()}}
                                 <div class=" rounded-lg">
                                     <div class="m-3">

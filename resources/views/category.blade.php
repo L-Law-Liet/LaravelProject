@@ -90,13 +90,24 @@
                                     </div>
 
                                     @if($admin)
-                                        <div class="text-center mt-3 m-2">
-                                            <button onclick="window.location='{{action('ProductsController@destroy', $p->id)}}'" class="btn btn-danger col-2">
-                                                <img src="{{asset('img/trash.svg')}}" alt=""></button>
-
-                                            <button class="btn btn-info col-2" onclick="window.location='{{url('product/edit', $p->id)}}'">
-                                                <img src="{{asset('img/edit.svg')}}" alt="">
-                                            </button>
+                                        <div class="text-center mt-3 m-2 ">
+                                            <div class="d-inline">
+                                                <form class="d-inline" action="{{action('ProductsController@destroy', $p->id)}}" method="post">
+                                                    @method('DELETE')
+                                                    {{csrf_field()}}
+                                                    <button type="submit" class="btn btn-danger col-2">
+                                                        <img src="{{asset('img/trash.svg')}}" alt="">
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="d-inline">
+                                                <form class="d-inline" action="{{url('product/edit', $p->id)}}" method="post">
+                                                    {{csrf_field()}}
+                                                    <button class="btn btn-info col-2" type="submit">
+                                                        <img src="{{asset('img/edit.svg')}}" alt="">
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     @endif
                                 </div>

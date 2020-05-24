@@ -53,10 +53,13 @@
                                 </div>
                                 <hr>
                                 <div class="text-center m-2 row">
-
                                     <div class="col">
-                                        <button onclick="window.location='{{action('UserController@destroyFromFavourites', $p->id)}}'" class="btn btn-danger">
-                                            <img src="{{asset('img/trash.svg')}}" alt=""></button>
+                                            <form action="{{action('UserController@destroyFromFavourites', $p->id)}}" method="post">
+                                                @method('DELETE')
+                                                {{csrf_field()}}
+                                                <button type="submit" class="btn btn-danger">
+                                                    <img src="{{asset('img/trash.svg')}}" alt=""></button>
+                                            </form>
                                     </div>
                                 </div>
                             </div>
