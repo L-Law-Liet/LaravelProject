@@ -31,7 +31,7 @@
                         {{ Auth::user()->firstname }} <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
+                    <div class="DropDown dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
                         <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{ url('profile') }}">
                             <i class="fa fa-user m-1" style="font-size: 22px"></i>
                             {{ __('Profile') }}
@@ -52,19 +52,20 @@
             <li><div class="nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-light dropdown-toggle"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Categories
                     <img class="ml-1 mb-1" src="{{asset(url('img/grid.svg'))}}" alt=""></div>
-                <div class="mt-2 dropdown-menu bg-dark">
-                    @if(count($categories)>0)
-                        @foreach($categories as $c)
-                            <a class="d-block p-1 bg-dark text-decoration-none dropdown-item text-light" href="{{url('category', $c->id)}}">
-                                <img class="mr-1 mb-1" src="{{asset('img/'.strtolower($c->name).'.svg')}}" alt="">{{$c->name}}
-                                </a>
-                        @endforeach
-                    @endif
-                    <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{url('category')}}">
-                        <img class="mr-1 mb-1" src="{{asset('img/viral.svg')}}" alt="">All Categories</a>
+                    <div class="mt-2 dropdown-menu bg-dark">
+                        @if(count($categories)>0)
+                            @foreach($categories as $c)
+                                <a class="d-block p-1 bg-dark text-decoration-none dropdown-item text-light" href="{{url('category', $c->id)}}">
+                                    <img class="mr-1 mb-1" src="{{asset('img/'.strtolower($c->name).'.svg')}}" alt="">{{$c->name}}
+                                    </a>
+                            @endforeach
+                        @endif
+                        <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{url('category')}}">
+                            <img class="mr-1 mb-1" src="{{asset('img/viral.svg')}}" alt="">All Categories</a>
 
+                    </div>
                 </div>
-            </div></li>
+            </li>
         </ul>
     </div>
 </nav>

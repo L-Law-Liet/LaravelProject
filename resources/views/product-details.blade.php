@@ -7,7 +7,7 @@
     <div class="min-vh-100">
         <div>
             <div class="justify-content-center d-flex">
-                <div id="M" style="min-height: 50px; opacity: 80%; z-index: 10; display: {{($b ?? '')? 'block;' : 'none;'}}"
+                <div id="M" style="min-height: 50px; opacity: 80%; z-index: 10; display: {{(($order->pId ?? '')  == $p->id )? 'block;' : 'none;'}}"
                      class="bg-success text-center text-white m-4 w-50 rounded-lg position-absolute">
                     <h4>Added To a Basket!</h4>
                 </div>

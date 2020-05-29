@@ -28,29 +28,14 @@ class PagesController extends Controller
         return view('news')->with('News', $news);
     }
     public function basket(){
-        $u = Auth::id();
-        $fids = DB::table('orders')->select('orders.pid')->where('uid', $u);
-        $p = DB::table('products')->select('products.*')->
-        join('orders', 'products.id', '=', 'orders.pid')->
-        join('users', 'orders.uid', '=', 'users.id')->
-        where('orders.uid',  $u)->get();
-        $pr = array();
-        for ($i=0; $i<count($p); $i++){
-            $pr[$i] = $p[$i]->id;
-        }
-        $b = DB::table('orders')->select('orders.*')->where('uId', $u)->
-        whereIn('pId', $pr)->get();
-//        $pr = Product::all()->whereIn('id', $p);
+        $u = Auth::user();
+        $p = $u->order;
+        $b = Order::where('uid', $u->id)->get();
         return view('basket')->with('products', $p)->with('b', $b);
     }
     public function favourites(){
-        $u = Auth::id();
-        $fids = DB::table('favourites')->select('favourites.pid')->where('uid', $u);
-        $p = DB::table('products')->select('products.*')->
-        join('favourites', 'products.id', '=', 'favourites.pid')->
-        join('users', 'favourites.uid', '=', 'users.id')->
-        where('favourites.uid',  $u)->get();
-//        $pr = Product::all()->whereIn('id', $p);
+        $u = Auth::user();
+        $p = $u->favourites;
         return view('favourites')->with('products', $p);
     }
     public function login(){

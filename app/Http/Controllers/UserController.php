@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Favourites;
 use App\Feedback;
 use App\Models\Product;
+use App\Order;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,56 +14,36 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     function favourites($id){
-        $uid = Auth::id();
+        $u = Auth::user();
         $p = Product::find($id);
-        $L = DB::table('favourites')->select('favourites.*')->
-        where('uid',  $uid)->where('pid', $id)->
-        join('users', 'favourites.uid', '=', 'users.id')->
-        join('products', 'favourites.pid', '=', 'products.id')->first();
-        if (!$L) {
-            DB::table('favourites')->insert([
-                'uid' => $uid,
-                'pid' => $id
-            ]);
+        $f = Favourites::where('pid', $p->id)->where('uid', $u->id)->first();
+        if ($f){
+            $u->favourites()->detach($p->id);
         }
         else{
-            DB::table('favourites')->where('uid', $uid)->
-            where('pid', $id)->delete();
+            $u->favourites()->attach($p->id);
         }
-        $L = DB::table('favourites')->select('favourites.*')->
-        where('uid',  $uid)->where('pid', $id)->
-        join('users', 'favourites.uid', '=', 'users.id')->
-        join('products', 'favourites.pid', '=', 'products.id')->first();
-
-//        $L = Favourites::all()->where('uid', '=', '$uid')->get();
+        $f = Favourites::where('pid', $p->id)->where('uid', $u->id)->first();
         $fb = Feedback::all()->where('pId', $id);
-        return view('product-details')->with('p', $p)->with('f', $L)->with('fbs', $fb);
+        return view('product-details')->with('p', $p)->with('f', $f)->with('fbs', $fb);
     }
-    function basket($id, Request $request){
-        $uid = Auth::id();
-        $p = Product::find($id);
-        $L = DB::table('orders')->select('orders.*')->
-        where('uid',  $uid)->where('pid', $id)->
-        join('users', 'orders.uid', '=', 'users.id')->
-        join('products', 'orders.pid', '=', 'products.id')->first();
-        if (!$L) {
-            DB::table('orders')->insert([
-                'uid' => $uid,
-                'pid' => $id,
-                'count'=>$request->input('count')
-            ]);
+    function basket($pid, Request $request){
+        $u = Auth::user();
+        $p = Product::find($pid);
+        $order = Order::where('pid', $pid)->where('uid', $u->id)->first();
+        if ($order){
+            $order->count += $request->input('count');
+            $order->save();
         }
-        else{
+        else {
+            $order = new Order;
+            $order->uId = $u->id;
+            $order->pId = $pid;
+            $order->count = $request->input('count');
+            $order->save();
         }
-        $L = DB::table('orders')->select('orders.*')->
-        where('uid',  $uid)->where('pid', $id)->
-        join('users', 'orders.uid', '=', 'users.id')->
-        join('products', 'orders.pid', '=', 'products.id')->first();
-
-//        $L = Favourites::all()->where('uid', '=', '$uid')->get();
-
-        $fb = Feedback::all()->where('pId', $id);
-        return view('product-details')->with('p', $p)->with('b', $L)->with('fbs', $fb);
+        $fb = Feedback::all()->where('pId', $pid);
+        return view('product-details')->with('p', $p)->with('order', $order)->with('fbs', $fb);
     }
     function destroyFromBasket($id){
         $uid = Auth::id();
@@ -76,14 +57,9 @@ class UserController extends Controller
         return redirect('basket')->with('products', $p);
     }
     function destroyFromFavourites($id){
-        $uid = Auth::id();
-        DB::table('favourites')->where('uid', $uid)->
-        where('pid', $id)->delete();
-        $p = DB::table('products')->select('products.*')->
-        join('favourites', 'products.id', '=', 'favourites.pid')->
-        join('users', 'favourites.uid', '=', 'users.id')->
-        where('favourites.uid',  $uid)->get();
-//        $pr = Product::all()->whereIn('id', $p);
+        $u = Auth::user();
+        $p = Product::where('id', $id)->get();
+        $u->favourites()->detach($p);
         return redirect('favourites')->with('products', $p);
     }
     function update(Request $request){

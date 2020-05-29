@@ -39,4 +39,10 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Models\Role');
     }
+    function favourites(){
+        return $this->belongsToMany(Product::class, 'favourites', 'uid', 'pid');
+    }
+    function order(){
+        return $this->belongsToMany(Product::class, 'orders', 'uid', 'pid');
+    }
 }
