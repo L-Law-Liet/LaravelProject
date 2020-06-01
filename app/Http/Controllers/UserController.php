@@ -66,7 +66,7 @@ class UserController extends Controller
         $v = $request->validate([
             'firstname'  => 'required|max:190',
             'lastname'  => 'required|max:100',
-            'phone' => 'required'
+            'phone' => 'required|unique:users'
         ]);
         $u = Auth::user();
         $u->firstname = $request->input('firstname');
