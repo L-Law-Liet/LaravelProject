@@ -62,3 +62,9 @@
     50% {background-position: 100% 56%}
     100% {background-position: 0 45%}
 }
+
+@media (max-width: 578px) {
+    .w-75 {
+        width: 100% !important;
+    }
+}

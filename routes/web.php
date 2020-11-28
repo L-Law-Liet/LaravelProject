@@ -26,7 +26,7 @@ Route::put('profile/update', 'UserController@update');
 Route::put( '/profile', 'UserController@profileImage');
 Route::get('category/{id?}', 'CategoriesController@show');
 Route::get('/sale', 'ProductsController@sale');
-Route::post('product/edit/{id}', 'ProductsController@edit');
+Route::get('product/edit/{id}', 'ProductsController@edit')->name('product-update');
 Route::get('product/add', 'ProductsController@create');
 Route::post('category', 'ProductsController@store');
 Route::put('product/update/{id}', 'ProductsController@update');

@@ -137,3 +137,17 @@ article, .Cost{
     transition: 1s;
     opacity: 1;
 }
+
+@media (max-width: 578px) {
+
+    .Dleft, .Dright {
+        width: 100%;
+    }
+    .Img {
+        margin: 0;
+        width: 300px !important;
+    }
+    .outer-Img{
+        width: 310px !important;
+    }
+}

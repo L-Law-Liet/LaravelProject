@@ -1,17 +1,24 @@
-<nav>
-    <div class="bg-dark d-flex justify-content-center">
+
+<div class="bg-dark d-flex justify-content-center">
+<nav class="navbar navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars text-light"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
         <ul class="nav">
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('/')}}">Home
                     <img class="ml-1 mb-1" src="{{asset(url('img/home.svg'))}}" alt=""></a></li>
-            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('news')}}">News
+            <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('news')}}">Contacts
                     <img class="ml-1 mb-1" src="{{asset(url('img/news.svg'))}}" alt=""></a></li>
             <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('sale')}}">Sale
             <img class="ml-1 mb-1" src="{{asset(url('img/sale.svg'))}}" alt=""></a></li>
         @if(Auth::check() && !Auth::user()->isAdmin)
                 <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('favourites')}}">Favourites
                         <img class="ml-1 mb-1" src="{{asset(url('img/star.svg'))}}" alt=""></a></li>
-                <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-light" href="{{url('basket')}}">
-                        Basket <img class="ml-1 mb-1" src="{{asset(url('img/cart.svg'))}}" alt="">
+                <li class="nav-link m-1 mr-3 ml-3"><a class="text-decoration-none text-warning font-weight-bold" href="{{url('basket')}}">
+                        Orders <img class="ml-1 mb-1" src="{{asset(url('img/cart.svg'))}}" alt="">
                     </a></li>
                @endif
             @guest
@@ -42,17 +49,16 @@
                             <img class="ml-1 mb-1" src="{{asset(url('img/logout.svg'))}}" alt="">
                             {{ __('Logout') }}
                         </a>
-
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     </div>
                 </li>
             @endguest
-            <li><div class="nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-light dropdown-toggle"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Categories
+            <li class="position-relative"><div class="nav-link m-1 mr-3 ml-3"><div class="text-decoration-none text-light dropdown-toggle"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Menus
                     <img class="ml-1 mb-1" src="{{asset(url('img/grid.svg'))}}" alt=""></div>
-                    <div class="mt-2 dropdown-menu bg-dark">
+                    <div class="dropdown-menu bg-dark border-0">
                         @if(count($categories)>0)
                             @foreach($categories as $c)
                                 <a class="d-block p-1 bg-dark text-decoration-none dropdown-item text-light" href="{{url('category', $c->id)}}">
@@ -61,11 +67,13 @@
                             @endforeach
                         @endif
                         <a class="Item d-block p-1 bg-dark text-decoration-none text-light" href="{{url('category')}}">
-                            <img class="mr-1 mb-1" src="{{asset('img/viral.svg')}}" alt="">All Categories</a>
+                            <img class="mr-1 mb-1" src="{{asset('img/viral.svg')}}" alt="">All Menus</a>
 
                     </div>
                 </div>
             </li>
         </ul>
-    </div>
+</div>
+</div>
 </nav>
+</div>

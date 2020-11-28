@@ -5,20 +5,20 @@
 <script type="text/javascript" src="{{ asset('js/welcome.js') }}"></script>
 @endsection
 @section('content')
-    <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-4">In our store you will find</h1>
-    <div class="m-5">
+    <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-md-4">Bavaria</h1>
+    <div class="m-md-1 m-md-5">
         <?$i = 0?>
         @foreach($ps as $k => $p)
             @if($i%2 == 0)
                 <div>
                 @endif
-            <div class="bg-light border rounded-lg p-2 m-3 {{($i%2 == 0)? 'Dleft':'Dright'}}">
+            <div class="bg-light border rounded-lg p-2 m-md-3 mb-1 {{($i%2 == 0)? 'Dleft':'Dright'}}">
               <div>
-                  <div class="m-4">
+                  <div class="m-md-4">
                       <div class="text-center mb-5 p-1">
                           <h4 class="font-weight-normal">{{$p->name}}</h4></div>
                       <div class="Cont">
-                        <div class="mb-4 {{($i%2 == 0)? 'float-left': 'float-right'}}" style="width: 350px; height: 300px">
+                        <div class="mb-4 outer-Img {{($i%2 == 0)? 'float-left': 'float-right'}}" style="width: 350px; height: 300px">
                           <div onclick="window.location='{{url("product-details", $p->id)}}'" class="Img rounded-lg"
                                style="background: url('{{asset('img/'. $p->path)}}') no-repeat"></div>
                         </div>
@@ -43,7 +43,7 @@
                       </div>
                   </div>
                   <div class="clearfix"></div>
-                  <div class="Cont {{($i%2 == 0)? 'ml-4': 'mr-4'}}">
+                  <div class="Cont {{($i%2 == 0)? 'ml-md-4': 'mr-md-4'}}">
                       <a id="Ref" href="{{url("product-details", $p->id)}}"
                          class="btn p-2 rounded-lg text-decoration-none text-white">More >></a>
                   </div>

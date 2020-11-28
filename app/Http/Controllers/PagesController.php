@@ -24,7 +24,7 @@ class PagesController extends Controller
         return view('home.home')->with('ps', $p);
     }
     public function news(){
-        $news = ['New', 'Waterfall', 'Design'];
+        $news = ['Phone: 8-777-476-71-17', 'Address: Uralsk, 7mkr', 'Email: a.kadirov.17.06@gmail.com'];
         return view('news')->with('News', $news);
     }
     public function basket(){

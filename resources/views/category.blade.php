@@ -11,10 +11,10 @@
                 style="opacity: 80%; z-index: 10;">{{session()->get('ms')}}</h4>
         </div>
     @endif
-    <div class="m-4">
-        <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-4">
+    <div class="m-md-4">
+        <h1 class="h1d text-center font-weight-bold rounded-lg p-2 m-md-4">
             @if($category == '')
-                All Categories
+                All Menu
             @else
                 {{$category->name}}
             @endif
@@ -30,8 +30,8 @@
         </div>
 
     <div class="justify-content-center d-flex">
-        <div class="w-75 rounded-lg mt-5">
-            <div class="card mr-5 ml-5 p-3">
+        <div class="w-75 rounded-lg mt-5 mb-md-auto mb-3">
+            <div class="card mr-md-5 ml-md-5 p-md-3">
                 <form action="{{(!empty($category->id)) ? url('category', $category->id) : url('category')}}" method="get">
                     <div class="input-group">
                         <h4 class="font-weight-normal mr-1">Sorting: </h4>
@@ -67,9 +67,9 @@
             @if(count($products)>0)
                 <div id="ns">
                     @foreach($products as $p)
-                        <div id="Inner" class="card bg-light card-body m-5">
+                        <div id="Inner" class="card bg-light card-body m-md-5">
                             <div class="row">
-                                <div class="col-7 m-2">
+                                <div class="col-md-7 col-12 m-2">
                                     <div class="m-1">
                                         <h3 class="btn-outline-primary btn w-100 border-right-0 border-left-0 rounded-0 btn-lg"
                                             onclick="window.location='{{url("product-details", $p->id)}}'">{{$p->name}}</h3>
@@ -101,8 +101,7 @@
                                                 </form>
                                             </div>
                                             <div class="d-inline">
-                                                <form class="d-inline" action="{{url('product/edit', $p->id)}}" method="post">
-                                                    {{csrf_field()}}
+                                                <form class="d-inline" action="{{url('product/edit', $p->id)}}" method="get">
                                                     <button class="btn btn-info col-2" type="submit">
                                                         <img src="{{asset('img/edit.svg')}}" alt="">
                                                     </button>
@@ -123,8 +122,8 @@
                         </div>
                     @endforeach
                 </div>
-                <div id="page">
-                    {{$products->links()}}
+                <div id="page" class="mt-md-auto mt-3 justify-content-center d-flex">
+                        {{$products->links()}}
                 </div>
             @endif
         </div>

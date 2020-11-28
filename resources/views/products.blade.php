@@ -6,10 +6,12 @@
 @section('content')
 <div class="min-vh-100">
     <div class="d-flex justify-content-center">
-        <div id="M" style="min-height: 18px; opacity: 80%; z-index: 10; display: {{($m ?? '')? 'block;' : 'none;'}}"
-             class="bg-primary text-center text-white m-4 w-50 rounded-lg position-absolute">
-            <h4>Product Updated Successfully!</h4>
-        </div>
+        @if(session('m'))
+            <div id="M" style="min-height: 18px; opacity: 80%; z-index: 10;"
+                 class="bg-primary text-center text-white m-4 w-50 rounded-lg position-absolute">
+                <h4>Product Updated Successfully!</h4>
+            </div>
+            @endif
         <div class="col-8 m-5 border border-info rounded-lg bg-light ">
             <div class="m-3">
                 <h1 class="h1d text-center rounded-lg p-2 m-4">Product Edit</h1>

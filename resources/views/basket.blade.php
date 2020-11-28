@@ -81,6 +81,7 @@
                                 Your basket is empty
                             </div>
                         @endif
+                        <button class="btn btn-primary mb-3 w-100">Make order</button>
                 </div>
             </div>
         </div>

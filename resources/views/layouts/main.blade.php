@@ -87,7 +87,9 @@ $categories = Category::all();
 <body style="background-image: linear-gradient(270deg, lightskyblue, lightgrey);">
 @include('layouts.navbar')
 <!-- Start your project here-->
-@yield('content')
+<div class="w-100">
+    @yield('content')
+</div>
 @include('layouts.footer')
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{asset('bootstrap-component/js/mdb.min.js')}}"></script>

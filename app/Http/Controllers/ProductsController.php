@@ -97,7 +97,7 @@ use App\Models\Product;
         $u = Auth::id();
         $a = User::all()->where('id', '=', $u)->first->toArray();
         $L = $a['isAdmin'];
-        return view('sales')->with('products', $products)->with('title', 'Sales Products $$')->with('admin', $L);
+        return view('sales')->with('products', $products)->with('title', 'Sales')->with('admin', $L);
     }
 
      /**
@@ -117,7 +117,7 @@ use App\Models\Product;
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -148,7 +148,7 @@ use App\Models\Product;
             request()->image->move(public_path('/img'), $product->path);
         }
         $product->save();
-        return view('products')->with('product', $product)->with('m', 'Updated');
+        return redirect()->route('product-update', $product->id)->with('m', 'Updated');
     }
 
     /**

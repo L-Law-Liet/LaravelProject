@@ -2,14 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40576cfd-3976-4214-9f55-cef5c1089c9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel_db (1).sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/category.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/basket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/basket.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +43,23 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="laravel_db@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="laravel_db@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="laravel_db@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="laravel_db: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -165,22 +191,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../domains/nidge/studypage" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Open Server\LaravelProject\public\js" />
+      <recent name="D:\Open Server\LaravelProject\public\img" />
+      <recent name="D:\Open Server\LaravelProject\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Open Server\LaravelProject\public\img" />
       <recent name="D:\Open Server\LaravelProject\app\Http\Controllers" />
       <recent name="D:\Open Server\LaravelProject\app\Http\Controllers\Auth" />
       <recent name="D:\Open Server\LaravelProject\app\Models" />
       <recent name="D:\Open Server\LaravelProject\app" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Open Server\LaravelProject\public\js" />
-      <recent name="D:\Open Server\LaravelProject\public\img" />
-      <recent name="D:\Open Server\LaravelProject\public" />
     </key>
   </component>
   <component name="RunManager">
@@ -257,97 +284,104 @@
       <workItem from="1590858610643" duration="650000" />
       <workItem from="1590918474692" duration="340000" />
       <workItem from="1590939379528" duration="176000" />
-      <workItem from="1590980088186" duration="620000" />
+      <workItem from="1590980088186" duration="909000" />
+      <workItem from="1590994341727" duration="1340000" />
+      <workItem from="1591273320358" duration="1196000" />
+      <workItem from="1591357471755" duration="775000" />
+      <workItem from="1591521960387" duration="1281000" />
+      <workItem from="1591608303760" duration="2991000" />
+      <workItem from="1591616212756" duration="1957000" />
+      <workItem from="1591620119165" duration="1391000" />
+      <workItem from="1591729687465" duration="2076000" />
+      <workItem from="1592225078303" duration="2309000" />
+      <workItem from="1592881216982" duration="704000" />
+      <workItem from="1592893443814" duration="1503000" />
+      <workItem from="1592908419374" duration="43000" />
+      <workItem from="1593763797733" duration="1292000" />
+      <workItem from="1593969701994" duration="1695000" />
+      <workItem from="1594011062662" duration="195000" />
+      <workItem from="1594195308278" duration="679000" />
+      <workItem from="1594294761191" duration="660000" />
+      <workItem from="1594971131302" duration="1062000" />
+      <workItem from="1594975255800" duration="692000" />
+      <workItem from="1594976398940" duration="79000" />
+      <workItem from="1594976989848" duration="709000" />
+      <workItem from="1594978630627" duration="128000" />
+      <workItem from="1594978892422" duration="1258000" />
+      <workItem from="1594980743536" duration="636000" />
+      <workItem from="1595145659441" duration="1761000" />
+      <workItem from="1595153452079" duration="501000" />
+      <workItem from="1595582633404" duration="406000" />
+      <workItem from="1595584352512" duration="78000" />
+      <workItem from="1595584936744" duration="632000" />
+      <workItem from="1595696025300" duration="1252000" />
+      <workItem from="1595738906884" duration="66000" />
+      <workItem from="1596790042768" duration="1982000" />
+      <workItem from="1596802057549" duration="655000" />
+      <workItem from="1602685080837" duration="4273000" />
+      <workItem from="1602693949363" duration="402000" />
+      <workItem from="1603045385121" duration="201000" />
+      <workItem from="1603908009476" duration="1311000" />
+      <workItem from="1603947134647" duration="343000" />
+      <workItem from="1604828669490" duration="13403000" />
+      <workItem from="1604854375890" duration="199000" />
+      <workItem from="1605434794239" duration="4760000" />
+      <workItem from="1605450154215" duration="207000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="70" key="#SQL_Dialects" timestamp="1587720118227">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602685185392">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1587720118227" />
-    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587721507713">
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602685185392" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605450358376">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587721507713" />
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587544046569">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605450358376" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1603910520514">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1587544046569" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590761892180">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603910520514" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1603910520514">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590761892180" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590672989239">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603910520514" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1603910520514">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590672989239" />
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1590761743330">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603910520514" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1603910520514">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1590761743330" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1590818789631">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603910520514" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604836335298">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590818789631" />
-    <state x="629" y="333" key="Github.Dialog.Accounts.Choose" timestamp="1587453612301">
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1604836335298" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1605450326259">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="629" y="333" key="Github.Dialog.Accounts.Choose/0.0.1536.824@0.0.1536.824" timestamp="1587453612301" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1587353668838">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1605450326259" />
+    <state x="463" y="149" width="609" height="526" key="find.popup" timestamp="1604845261994">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587353668838" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1587353668838">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587353668838" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1587353668838">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587353668838" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1587353668838">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587353668838" />
-    <state x="604" y="335" key="NewPhpFileDialog" timestamp="1589899409066">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589899409066" />
-    <state x="610" y="123" key="RollbackChangesDialog" timestamp="1590763315664">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="610" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590763315664" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1587722761170">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587722761170" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1589092560897">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1589092560897" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590682616473">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1590682616473" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1590815194343">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590815194343" />
-    <state x="463" y="17" width="758" height="789" key="find.popup" timestamp="1590679739867">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="463" y="17" width="758" height="789" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1590679739867" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1590681693976">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1590681693976" />
-    <state x="425" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1590663967515">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1590663967515" />
+    <state x="463" y="149" width="609" height="526" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1604845261994" />
   </component>
 </project>
