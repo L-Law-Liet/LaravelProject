@@ -10,6 +10,9 @@
 
             <div class="d-flex justify-content-center">
                 <div class="w-75">
+                    @php
+                        $total = 0;
+                    @endphp
                     @foreach($products as $p)
                         @foreach($b as $basket)
                             @if($basket->pId == $p->id)
@@ -68,6 +71,9 @@
                                 <div class="col-4">
                                     <p class="border text-center p-1 rounded-lg" style="font-size: 20px">
                                         Total: ${{($p->price*(1-$p->discount/100))*$basket->count}}
+                                        @php
+                                          $total += ($p->price*(1-$p->discount/100))*$basket->count;
+                                        @endphp
                                     </p>
                                 </div>
                             </div>
@@ -80,8 +86,10 @@
                             style="font-size: 30px">
                                 Your basket is empty
                             </div>
+                        @else
+
+                        <a href="{{route('checkout.show')}}" class="btn btn-primary text-light mb-3 w-100">Make order</a>
                         @endif
-                        <button class="btn btn-primary mb-3 w-100">Make order</button>
                 </div>
             </div>
         </div>

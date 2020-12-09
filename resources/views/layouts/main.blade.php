@@ -33,9 +33,6 @@ $categories = Category::all();
             overflow: scroll;
             overflow-x: hidden;
         }
-        .DropDown{
-            left: 40px !important;
-        }
         ::-webkit-scrollbar {
             width: 0;  /* Remove scrollbar space */
             background: transparent;  /* Optional: just make scrollbar invisible */

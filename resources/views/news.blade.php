@@ -20,7 +20,7 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;'>
-                        <h1 class="h1w text-light">{{$n}}</h1>
+                        <h1 onclick="window.location='{{url('product-details/45')}}'" class="h1w text-light">{{$n}}</h1>
                     </section>
                     @endforeach
             </div>
